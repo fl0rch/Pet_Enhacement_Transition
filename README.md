@@ -2,8 +2,8 @@
 Proyecto TFM
 
 * Programa para una protectora de animales, basado en perros y gatos.
-* El modelo entendera lo que quieres por la raza de la mascota.
-* También se utilizara la traducción automática para entender el ingles.
+* Se utilizara dos modelos: Uno para detectar si es perro o gato, y otro para detectar las características de las mascotas (tamaño, raza y edad)
+* También se utilizara la traducción automática para transformar la página de español a ingles.
 
 URL a la aplicación web: https://diegovp97-tfmpet-pagina-evn7v5.streamlit.app/
 
@@ -35,7 +35,7 @@ En esta página tenemos un apartado de donaciones por si quieren donar algo tant
 ![image](https://user-images.githubusercontent.com/122355831/220759063-f22367a3-8630-404a-81c7-71c9d7e5a97e.png?=50)
 
 
-En esta página tenemos un formario por si quieren hacer preguntas, que está programado para que se envie a un correo, luego tenemos un chatbot que todavia hay que programar
+En esta página tenemos un formulario por si quieren hacer preguntas, que está programado para que se envie a un correo, luego tenemos un chatbot que todavia hay que programar
 
 ## Página 5
 
