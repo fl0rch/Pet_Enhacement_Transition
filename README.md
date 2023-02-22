@@ -1,7 +1,7 @@
 # P.E.T: Pet Enhacement Transition
 ## Descripción del proyecto TFM
 
-* Programa para una protectora de animales, basado en perros y gatos.
+* Página web para una protectora de animales, basado en perros y gatos.
 * Se utilizara dos modelos: Uno para detectar si es perro o gato, y otro para detectar las características de las mascotas (tamaño, raza y edad)
 * También se utilizara la traducción automática para transformar la página de español a ingles.
 
