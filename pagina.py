@@ -90,7 +90,7 @@ def write_page_2():
     }
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
     st.write("Has seleccionado adoptar un", breed_choice, animal_choice)
-    st.write("Aquí hay algunas fotos de los", breed_choice, animal_choice, "s disponibles para su adopción:")
+    st.write("Aquí hay algunas fotos de los", breed_choice,"s disponibles para su adopción:")
 
 def write_page_3():
     st.write("<h2>Donar:</h2>", unsafe_allow_html=True)
