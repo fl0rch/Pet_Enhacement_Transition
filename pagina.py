@@ -289,14 +289,14 @@ def write_restricted_page():
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
         
             
-            if st.button('Guardar'):
-                pet_model = joblib.load('pet_model.pkl')
-                img_array = keras.utils.img_to_array(image)
-                img_array = img_array/255.
-                img_array = tf.image.resize(img_array, [256, 256])
-                pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
-                
-                 breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
+       if st.button('Guardar'):
+    pet_model = joblib.load('pet_model.pkl')
+    img_array = keras.utils.img_to_array(image)
+    img_array = img_array/255.
+    img_array = tf.image.resize(img_array, [256, 256])
+    pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
+
+    breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
                    'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
                    'American Hairless', 'Airedale', 'Bull Terrier', 'Border Collie',
                    'Borzoi', 'Bloodhound', 'Bluetick', 'Bull Mastiff', 'Blenheim',
@@ -314,11 +314,11 @@ def write_restricted_page():
                    'Shar_Pei', 'Schnauzer', 'Yorkie', 'Bombay', 'Bengal',
                    'American Shorthair', 'Maine Coon', 'Egyptian Mau', 'Abyssinian',
                    'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
-                   'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx'
-            
-            prediction = breed_list[pred]
-            st.write(f'The breed is {prediction}')
-            #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+                   'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
+                   
+    predicted_breed = breed_list[pred]
+    st.write("Predicción de raza: ", predicted_breed)
+
                 
     else:
         # Mostrar la página de inicio de sesión
