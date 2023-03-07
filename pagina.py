@@ -289,7 +289,7 @@ def write_restricted_page():
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
         
             
-       if st.button('Guardar'):
+  if st.button('Guardar'):
     pet_model = joblib.load('pet_model.pkl')
     img_array = keras.utils.img_to_array(image)
     img_array = img_array/255.
