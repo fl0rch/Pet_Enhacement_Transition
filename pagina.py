@@ -314,7 +314,7 @@ def write_restricted_page():
                                   'Shar_Pei', 'Schnauzer', 'Yorkie', 'Bombay', 'Bengal',
                                    'American Shorthair', 'Maine Coon', 'Egyptian Mau', 'Abyssinian',
                                    'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
-                                    'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
+                                   'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
             
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
