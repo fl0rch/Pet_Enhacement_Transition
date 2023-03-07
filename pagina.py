@@ -264,6 +264,7 @@ def write_restricted_page():
         if st.button('Guardar'):
             pet_model = joblib.load('pet_model.pkl')
             img_array = keras.utils.img_to_array(image)
+            img_array = img_array/255.
             img_array = tf.image.resize(img_array, [256, 256])
             prediction = pet_model.predict(img_array)
             st.write(f'The breed is {prediction}')
