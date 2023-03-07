@@ -259,7 +259,7 @@ def write_page_5():
         }
         save_volunteer_to_mongo(volunteer)
         
- allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
+        allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
 
 def authenticate(password):
     if password in allowed_passwords:
