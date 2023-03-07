@@ -267,7 +267,7 @@ def write_restricted_page():
             img_array = keras.utils.img_to_array(image)
             #img_array = img_array/255.
             img_array = tf.image.resize(img_array, [256, 256])
-            pred = np.argmax(pet_model.predict(img_array)
+            pred = np.argmax(pet_model.predict(img_array))
             
             breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
        'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
