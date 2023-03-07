@@ -6,3 +6,5 @@ pandas
 yagmail
 markdown
 joblib
+tensorflow
+keras
