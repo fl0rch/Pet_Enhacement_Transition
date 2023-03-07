@@ -253,6 +253,8 @@ def write_restricted_page():
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
+        name_pet = st.text_input("Nombre", "Toby", key="placeholder")
+        description_pet = st.text_area("Descripción", "Es una mascota muy cariñosa y sociable.", key="placeholder")
 
         # Agregar aquí el código para predecir si es un perro o un gato
 
