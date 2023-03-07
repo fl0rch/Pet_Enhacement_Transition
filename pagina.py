@@ -277,7 +277,24 @@ def write_restricted_page():
 
       placeholder.title("Predictor")
       placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
+        
+    else:
+        # Mostrar la página de inicio de sesión
+        st.title("Iniciar sesión")
 
+        # Campo para ingresar la contraseña
+        password = st.text_input("Contraseña", type="password")
+
+        # Botón para iniciar sesión
+        if st.button("Iniciar sesión"):
+            if authenticate(password):
+                st.success("Inicio de sesión exitoso.")
+
+                # Reemplazar el espacio vacío con el contenido de la página restringida
+                placeholder.empty()
+                write_restricted_page()
+            else:
+                st.error("Contraseña incorrecta.")
     # Agregar el botón para subir imágenes
     uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
 
