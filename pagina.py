@@ -65,12 +65,32 @@ def write_page_2():
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
     breeds = {
-        'Perro': ['Labrador', 'Golden Retriever', 'Caniche'],
-        'Gato': ['Siamés', 'Persa', 'Británico de pelo corto']
+        'Perro': ['African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
+       'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
+       'American Hairless', 'Airedale', 'Bull Terrier', 'Border Collie',
+       'Borzoi', 'Bloodhound', 'Bluetick', 'Bull Mastiff', 'Blenheim',
+       'Boxer', 'Boston Terrier', 'Bichon Frise', 'Chinese Crested',
+       'Chihuahua', 'Cocker', 'Chow', 'Collie', 'Corgi', 'Cockapoo',
+       'Clumber', 'Cairn', 'Bulldog', 'German Sheperd',
+       'Golden Retriever', 'Great Dane', 'Dhole', 'Coyote',
+       'French Bulldog', 'Doberman', 'Elk Hound', 'Dalmation', 'Dingo',
+       'Great Perenees', 'Labradoodle', 'Irish Spaniel', 'Greyhound',
+       'Lhasa', 'Groenendael', 'Japanese Spaniel', 'Irish Wolfhound',
+       'Komondor', 'Labrador', 'Pomeranian', 'Pit Bull', 'Pekinese',
+       'Rhodesian', 'Maltese', 'Mex Hairless', 'Malinois', 'Poodle',
+       'Pug', 'Newfoundland', 'Shih-Tzu', 'Shiba Inu', 'Rottweiler',
+       'Siberian Husky', 'Scotch Terrier', 'Vizsla', 'Saint Bernard',
+       'Shar_Pei', 'Schnauzer', 'Yorkie'],
+        'Gato': ['Bombay', 'Bengal', 'American Shorthair', 'Maine Coon',
+       'Egyptian Mau', 'Abyssinian', 'American Bobtail', 'Persian',
+       'British Shorthair', 'Birman', 'Ragdoll', 'Siamese',
+       'Russian Blue', 'Tuxedo', 'Sphynx']
     }
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
     st.write("Has seleccionado adoptar un", breed_choice, animal_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice, animal_choice, "s disponibles para su adopción:")
+    
+    df_adopted = pd.DataFrame(columns = ["path", "name", "breed", "desciption"])
     
     import os
     image_dir = f"{animal_choice.lower()}_{breed_choice.lower()}_images"
@@ -267,7 +287,7 @@ def write_restricted_page():
             img_array = keras.utils.img_to_array(image)
             img_array = img_array/255.
             img_array = tf.image.resize(img_array, [256, 256])
-            pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=1)))
+            pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
             
             breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
        'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
@@ -291,6 +311,7 @@ def write_restricted_page():
             
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
+            #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
 
 
         # Agregar aquí el código para predecir si es un perro o un gato
