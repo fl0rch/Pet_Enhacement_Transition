@@ -266,7 +266,7 @@ def write_restricted_page():
             img_array = keras.utils.img_to_array(image)
             img_array = img_array/255.
             img_array = tf.image.resize(img_array, [256, 256])
-            prediction = pet_model.predict(img_array)
+            prediction = pet_model.predict(np.expand_dims(img_array, axis=0))
             st.write(f'The breed is {prediction}')
 
 
