@@ -274,7 +274,7 @@ def write_restricted_page():
     placeholder = st.empty()
     if st.session_state.get("logged_in"):
         placeholder.title("Predictor")
-        placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")")
+        placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
         
    
     # Agregar el botón para subir imágenes
