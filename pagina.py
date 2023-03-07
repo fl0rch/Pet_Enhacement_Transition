@@ -91,15 +91,15 @@ def write_page_2():
        'Russian Blue', 'Tuxedo', 'Sphynx']
     }
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
-    st.write("Has seleccionado adoptar un", breed_choice, animal_choice)
+    st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice,"s disponibles para su adopción:")
-    query = f"{animal_choice} {breed_choice}"
+    query = f"{breed_choice}"
     response = requests.get(f"https://www.google.com/search?q={query}&tbm=isch")
     soup = BeautifulSoup(response.text, 'html.parser')
     image_url = soup.find('img')['src']
 
     # Mostrar la imagen en la página
-    st.image(image_url, caption=f"{animal_choice} {breed_choice}", use_column_width=True)
+    st.image(image_url, caption=f" {breed_choice}", use_column_width=True)
 
 def write_page_3():
     st.write("<h2>Donar:</h2>", unsafe_allow_html=True)
