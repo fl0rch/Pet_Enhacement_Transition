@@ -290,23 +290,7 @@ def write_restricted_page():
         
         name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
         description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
-    else:
-        # Mostrar la página de inicio de sesión
-        st.title("Iniciar sesión")
-
-        # Campo para ingresar la contraseña
-        password = st.text_input("Contraseña", type="password")
-
-        # Botón para iniciar sesión
-        if st.button("Iniciar sesión"):
-            if authenticate(password):
-                st.success("Inicio de sesión exitoso.")
-
-                # Reemplazar el espacio vacío con el contenido de la página restringida
-                placeholder.empty()
-                write_restricted_page()
-            else:
-                st.error("Contraseña incorrecta.")
+    
         
         if st.button('Guardar'):
             pet_model = joblib.load('pet_model.pkl')
@@ -338,9 +322,25 @@ def write_restricted_page():
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
             #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+    else:
+        # Mostrar la página de inicio de sesión
+        st.title("Iniciar sesión")
 
+        # Campo para ingresar la contraseña
+        password = st.text_input("Contraseña", type="password")
 
-        # Agregar aquí el código para predecir si es un perro o un gato
+        # Botón para iniciar sesión
+        if st.button("Iniciar sesión"):
+            if authenticate(password):
+                st.success("Inicio de sesión exitoso.")
+
+                # Reemplazar el espacio vacío con el contenido de la página restringida
+                placeholder.empty()
+                write_restricted_page()
+            else:
+                st.error("Contraseña incorrecta.")
+
+         # Agregar aquí el código para predecir si es un perro o un gato
 
 
 
