@@ -278,7 +278,19 @@ def write_restricted_page():
       placeholder.title("Predictor")
       placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
         
-    else:
+   
+    # Agregar el botón para subir imágenes
+    uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+
+    # Si el usuario ha cargado una imagen, mostrarla en la página
+    if uploaded_file is not None:
+        #image = Image.open(uploaded_file)
+        image = keras.preprocessing.image.load_img(uploaded_file)
+        st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
+        
+        name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
+        description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
+     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
 
@@ -295,17 +307,6 @@ def write_restricted_page():
                 write_restricted_page()
             else:
                 st.error("Contraseña incorrecta.")
-    # Agregar el botón para subir imágenes
-    uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
-
-    # Si el usuario ha cargado una imagen, mostrarla en la página
-    if uploaded_file is not None:
-        #image = Image.open(uploaded_file)
-        image = keras.preprocessing.image.load_img(uploaded_file)
-        st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
-        
-        name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
-        description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
         
         if st.button('Guardar'):
             pet_model = joblib.load('pet_model.pkl')
