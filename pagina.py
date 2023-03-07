@@ -323,7 +323,7 @@ def write_restricted_page():
         else:
             # Mostrar la página para cargar imagen
              st.write("Por favor, carga una imagen para que podamos predecir si es un perro o un gato.")
-        else:
+    else:
         # Mostrar la página de inicio de sesión
           st.title("Iniciar sesión")
 
