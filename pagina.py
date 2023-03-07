@@ -316,9 +316,9 @@ def write_restricted_page():
                             'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
                             'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
             
-                              prediction = breed_list[pred]
-                                st.write(f'The breed is {prediction}')
-                                #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+                     prediction = breed_list[pred]
+                     st.write(f'The breed is {prediction}')
+                     #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
 
                 
     else:
