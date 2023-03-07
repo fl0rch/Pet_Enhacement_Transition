@@ -254,7 +254,8 @@ def write_restricted_page():
 
     # Si el usuario ha cargado una imagen, mostrarla en la página
     if uploaded_file is not None:
-        image = Image.open(uploaded_file)
+        #image = Image.open(uploaded_file)
+        image = keras.preprocessing.image.load_img(uploaded_file)
         st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
         
         name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
@@ -262,12 +263,10 @@ def write_restricted_page():
         
         if st.button('Guardar'):
             pet_model = joblib.load('pet_model.pkl')
-            img_scalar = keras.preprocessing.image.load_img(uploaded_file, target_size=(256, 256))
-            img_array = keras.preprocessing.image.img_to_array(img_scalar)
+            img_array = keras.utils.img_to_array(image)
+            img_array = tf.image.resize(img_array, [256, 256])
             prediction = pet_model.predict(img_array)
             st.write(f'The breed is {prediction}')
-            #img_scalar = keras.preprocessing.image.resize((256, 256))
-            #img_keras = keras.preprocessing.image.load_img(img_scalar)
 
 
         # Agregar aquí el código para predecir si es un perro o un gato
