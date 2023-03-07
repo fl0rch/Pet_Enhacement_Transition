@@ -17,6 +17,8 @@ from email.mime.multipart import MIMEMultipart
 import yagmail
 import urllib.parse
 import joblib
+import tensorflow as tf
+from tensorflow import keras
 
 
 
