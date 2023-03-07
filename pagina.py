@@ -60,6 +60,8 @@ def write_page_1():
     st.markdown('<i class="fa fa-twitter"></i> [Twitter](https://www.twitter.com/mi_protectora)', unsafe_allow_html=True)
 
     
+df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -89,19 +91,6 @@ def write_page_2():
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
     st.write("Has seleccionado adoptar un", breed_choice, animal_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice, animal_choice, "s disponibles para su adopción:")
-    
-    df_adopted = pd.DataFrame(columns = ["path", "name", "breed", "desciption"])
-    
-    import os
-    image_dir = f"{animal_choice.lower()}_{breed_choice.lower()}_images"
-    animal_images = [os.path.join(image_dir, f) for f in os.listdir(image_dir) if f.endswith(".jpg")]
-    st.image(animal_images, width=200)
-
-    
-    with open("adoptions.csv", "a") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([breed_choice, animal_choice])
-
 
 def write_page_3():
     st.write("<h2>Donar:</h2>", unsafe_allow_html=True)
