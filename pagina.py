@@ -311,11 +311,10 @@ def write_restricted_page():
        'Rhodesian', 'Maltese', 'Mex Hairless', 'Malinois', 'Poodle',
        'Pug', 'Newfoundland', 'Shih-Tzu', 'Shiba Inu', 'Rottweiler',
        'Siberian Husky', 'Scotch Terrier', 'Vizsla', 'Saint Bernard',
-       'Shar_Pei', 'Schnauzer', 'Yorkie',
-        'Bombay', 'Bengal', 'American Shorthair', 'Maine Coon',
-       'Egyptian Mau', 'Abyssinian', 'American Bobtail', 'Persian',
-       'British Shorthair', 'Birman', 'Ragdoll', 'Siamese',
-       'Russian Blue', 'Tuxedo', 'Sphynx']
+       'Shar_Pei', 'Schnauzer', 'Yorkie', 'Bombay', 'Bengal',
+       'American Shorthair', 'Maine Coon', 'Egyptian Mau', 'Abyssinian',
+       'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
+       'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
             
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
