@@ -290,7 +290,7 @@ def write_restricted_page():
         
         name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
         description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
-     else:
+    else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
 
