@@ -262,12 +262,12 @@ def write_restricted_page():
         
         if st.button('Guardar'):
             pet_model = joblib.load('pet_model.pkl')
-            img_scalar = keras.preprocessing.image.load_img(uploaded_file, target_size=(256, 256)
-            #img_scalar = keras.preprocessing.image.resize((256, 256))
+            img_scalar = keras.preprocessing.image.load_img(uploaded_file, target_size=(256, 256))
             img_array = keras.preprocessing.image.img_to_array(img_scalar)
-            #img_keras = keras.preprocessing.image.load_img(img_scalar)
             prediction = pet_model.predict(img_array)
             st.write(f'The breed is {prediction}')
+            #img_scalar = keras.preprocessing.image.resize((256, 256))
+            #img_keras = keras.preprocessing.image.load_img(img_scalar)
 
 
         # Agregar aquí el código para predecir si es un perro o un gato
