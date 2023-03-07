@@ -259,7 +259,7 @@ def write_page_5():
         }
         save_volunteer_to_mongo(volunteer)
         
-        allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
+       allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
 
 def authenticate(password):
     if password in allowed_passwords:
@@ -273,10 +273,8 @@ def authenticate(password):
 def write_restricted_page():
     placeholder = st.empty()
     if st.session_state.get("logged_in"):
-
-
-      placeholder.title("Predictor")
-      placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
+        placeholder.title("Predictor")
+        placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")")
         
    
     # Agregar el botón para subir imágenes
@@ -322,6 +320,9 @@ def write_restricted_page():
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
             #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+     else:
+            # Mostrar la página para cargar imagen
+            st.write("Por favor, carga una imagen para que podamos predecir si es un perro o un gato.")
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
@@ -339,7 +340,6 @@ def write_restricted_page():
                 write_restricted_page()
             else:
                 st.error("Contraseña incorrecta.")
-
          # Agregar aquí el código para predecir si es un perro o un gato
 
 
