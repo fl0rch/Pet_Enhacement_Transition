@@ -35,7 +35,7 @@ PAGE_3 = "Donar"
 PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
-PAGE_7 = "Log in"
+
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -258,15 +258,25 @@ def write_page_5():
             "disponibilidad": disponibilidad
         }
         save_volunteer_to_mongo(volunteer)
+        
+ allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
+
+def authenticate(password):
+    if password in allowed_passwords:
+        # Establecer la sesión como autenticada
+        st.session_state["logged_in"] = True
+        return True
+    else:
+        return False
+
 
 def write_restricted_page():
-    # Verificar si el usuario está autenticado
-    if not st.session_state.get("authenticated"):
-        st.error("Lo siento, esta pagina está restringida")
-        return
+    placeholder = st.empty()
+    if st.session_state.get("logged_in"):
 
-    st.title("Predictor")
-    st.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
+
+    placeholder.title("Predictor")
+    placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
 
     # Agregar el botón para subir imágenes
     uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
@@ -315,33 +325,14 @@ def write_restricted_page():
         # Agregar aquí el código para predecir si es un perro o un gato
 
 
-allowed_passwords = ["Mascotas", "Perritos", "Gatitos"]
 
-def authenticate(password):
-    if password in allowed_passwords:
-        # Establecer la sesión como autenticada
-        st.session_state["authenticated"] = True
-        return True
-    else:
-        return False
     
-def write_login_page():
-    st.title("Iniciar sesión")
 
-    # Campo para ingresar la contraseña
-    password = st.text_input("Contraseña", type="password")
-
-    # Botón para iniciar sesión
-    if st.button("Iniciar sesión"):
-        if authenticate(password):
-            st.success("Inicio de sesión exitoso.")
-        else:
-            st.error("Contraseña incorrecta.")
 
 
 
 def main():
-    page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6,PAGE_7])
+    page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
 
     if page == PAGE_1:
         write_page_1()
@@ -355,8 +346,7 @@ def main():
         write_page_5()
     elif page == PAGE_6:
         write_restricted_page()
-    elif page == PAGE_7:
-        write_login_page()
+    
 
 if __name__ == "__main__":
     main()
