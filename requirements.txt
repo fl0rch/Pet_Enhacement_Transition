@@ -9,4 +9,4 @@ joblib
 tensorflow
 keras
 numpy
-BeautifulSoup
+bs4
