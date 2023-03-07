@@ -275,29 +275,28 @@ def write_restricted_page():
     if st.session_state.get("logged_in"):
         placeholder.title("Predictor")
         placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
-        
-   
-    # Agregar el botón para subir imágenes
-    uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
 
-    # Si el usuario ha cargado una imagen, mostrarla en la página
-    if uploaded_file is not None:
-        #image = Image.open(uploaded_file)
-        image = keras.preprocessing.image.load_img(uploaded_file)
-        st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
-        
-        name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
-        description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
-    
-        
-        if st.button('Guardar'):
-            pet_model = joblib.load('pet_model.pkl')
-            img_array = keras.utils.img_to_array(image)
-            img_array = img_array/255.
-            img_array = tf.image.resize(img_array, [256, 256])
-            pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
+        # Agregar el botón para subir imágenes
+        uploaded_file = st.file_uploader("Cargar imagen", type=["jpg", "jpeg", "png"])
+
+        # Si el usuario ha cargado una imagen, mostrarla en la página
+        if uploaded_file is not None:
+            #image = Image.open(uploaded_file)
+            image = keras.preprocessing.image.load_img(uploaded_file)
+            st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
-            breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
+            name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
+            description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
+        
+            
+            if st.button('Guardar'):
+                pet_model = joblib.load('pet_model.pkl')
+                img_array = keras.utils.img_to_array(image)
+                img_array = img_array/255.
+                img_array = tf.image.resize(img_array, [256, 256])
+                pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
+                
+                 breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
        'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
        'American Hairless', 'Airedale', 'Bull Terrier', 'Border Collie',
        'Borzoi', 'Bloodhound', 'Bluetick', 'Bull Mastiff', 'Blenheim',
@@ -320,18 +319,16 @@ def write_restricted_page():
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
             #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
-        else:
-            # Mostrar la página para cargar imagen
-             st.write("Por favor, carga una imagen para que podamos predecir si es un perro o un gato.")
+                
     else:
         # Mostrar la página de inicio de sesión
-          st.title("Iniciar sesión")
+        st.title("Iniciar sesión")
 
         # Campo para ingresar la contraseña
-          password = st.text_input("Contraseña", type="password")
+        password = st.text_input("Contraseña", type="password")
 
         # Botón para iniciar sesión
-          if st.button("Iniciar sesión"):
+        if st.button("Iniciar sesión"):
             if authenticate(password):
                 st.success("Inicio de sesión exitoso.")
 
@@ -340,6 +337,7 @@ def write_restricted_page():
                 write_restricted_page()
             else:
                 st.error("Contraseña incorrecta.")
+
          # Agregar aquí el código para predecir si es un perro o un gato
 
 
