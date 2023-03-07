@@ -320,18 +320,18 @@ def write_restricted_page():
             prediction = breed_list[pred]
             st.write(f'The breed is {prediction}')
             #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
-     else:
+        else:
             # Mostrar la página para cargar imagen
-            st.write("Por favor, carga una imagen para que podamos predecir si es un perro o un gato.")
-     else:
+             st.write("Por favor, carga una imagen para que podamos predecir si es un perro o un gato.")
+        else:
         # Mostrar la página de inicio de sesión
-        st.title("Iniciar sesión")
+          st.title("Iniciar sesión")
 
         # Campo para ingresar la contraseña
-        password = st.text_input("Contraseña", type="password")
+          password = st.text_input("Contraseña", type="password")
 
         # Botón para iniciar sesión
-        if st.button("Iniciar sesión"):
+          if st.button("Iniciar sesión"):
             if authenticate(password):
                 st.success("Inicio de sesión exitoso.")
 
