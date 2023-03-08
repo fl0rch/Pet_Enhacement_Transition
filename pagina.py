@@ -76,6 +76,14 @@ def write_page_1():
     
 df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
+available_nums = {
+    'Beagle': [9],
+    'Boxer': [9],
+    'Lhasa': [4],
+    'Maine Coon': [5],
+    'Sphynx': [4]
+}
+
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -106,7 +114,10 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice,"s disponibles para su adopción:")
     
-    images_folder = 'img_predict/' + breed_choice.replace(" ", "_") + '_' + str(random.randint(1, 10)).zfill(2) + '.jpg'
+    breed_choice_nums = available_nums[breed_choice]
+    random_num = random.choice(breed_choice_nums)
+    
+    images_folder = f"img_predict/{breed_choice.replace(' ', '_')}_{random_num:02}.jpg"
     images_files = os.listdir(images_folder)
     images_files = [f for f in images_files if f.startswith(animal_choice.lower()) and f.endswith(".jpg") and breed_choice.lower() in f.lower()]
     
