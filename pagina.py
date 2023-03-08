@@ -58,7 +58,7 @@ def write_page_1():
     
     with open("dog.json") as source:
      dog = json.load(source)
-st.lottie(dog)
+    st.lottie(dog)
 
     
     
