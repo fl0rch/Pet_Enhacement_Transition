@@ -302,12 +302,8 @@ def write_restricted_page():
                animation = json.load(f)
 
             if st.button('Guardar'):
-               animation_widget = st_lottie(animation, speed=1, width=200, height=200, key="animation")
-               with st.spinner("Haciendo predicción"):
-                    time.sleep(2)  # simulación de la predicción
-                    st.success('¡Predicción hecha con éxito!')
-            else:
-                st_lottie(animation, speed=0, width=200, height=200, key="animation1")
+                with st.spinner("Cargando datos..."):
+                    st_lottie(animation, speed=1, width=100, height=100)
                 
                 pet_model = joblib.load('pet_model.pkl')
                 img_array = keras.utils.img_to_array(image)
