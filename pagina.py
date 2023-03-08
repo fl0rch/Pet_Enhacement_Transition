@@ -24,7 +24,6 @@ from bs4 import BeautifulSoup
 import json
 import streamlit_lottie
 from streamlit_lottie import st_lottie
-from streamlit_lottie import st_spinner
 
 
 
