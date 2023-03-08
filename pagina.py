@@ -57,9 +57,9 @@ def write_page_1():
     st.write("- Comparte nuestro mensaje en tus redes sociales para ayudarnos a llegar a más personas.")
     
     with open("dog.json") as source:
-        dog = json.load(source)
-        
-    st.lottie(dog)
+    dog = json.load(source)
+st.lottie(dog)
+
     
     
     
