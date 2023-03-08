@@ -22,6 +22,7 @@ from tensorflow import keras
 import numpy as np
 from bs4 import BeautifulSoup
 import json
+import streamlit_lottie
 
 
 
@@ -57,8 +58,7 @@ def write_page_1():
     
     
     
-    st.html_file("dog.html")
-
+    
     
     st.header("Síguenos en redes sociales")
     st.write("Síguenos en nuestras redes sociales para estar al tanto de las últimas noticias y novedades de nuestra protectora:")
