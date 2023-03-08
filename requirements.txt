@@ -11,3 +11,4 @@ keras
 numpy
 bs4
 streamlit-lottie
+json
