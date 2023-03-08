@@ -317,7 +317,7 @@ def write_restricted_page():
                 img_array = tf.image.resize(img_array, [256, 256])
                 pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
             
-                    breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
+                breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
                             'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
                             'American Hairless', 'Airedale', 'Bull Terrier', 'Border Collie',
                             'Borzoi', 'Bloodhound', 'Bluetick', 'Bull Mastiff', 'Blenheim',
