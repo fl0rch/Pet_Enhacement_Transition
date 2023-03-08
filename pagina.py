@@ -105,7 +105,7 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice,"s disponibles para su adopción:")
     
-    images_folder = "img_predict"
+    images_folder = "'img_predict/' + breed_choice.replace(" ", "_") + '_' + str(random.randint(1, 10)).zfill(2) + '.jpg'"
     images_files = os.listdir(images_folder)
     images_files = [f for f in images_files if f.startswith(animal_choice.lower()) and f.endswith(".jpg") and breed_choice.lower() in f.lower()]
     
