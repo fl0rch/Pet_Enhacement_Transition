@@ -123,19 +123,9 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     show_image(breed_choice)
     
-    breed_choice_nums = available_nums[breed_choice]
-    random_num = random.choice(breed_choice_nums)
     
-    images_folder = f"img_predict/{breed_choice.replace(' ', '_')}_{random_num:02}.jpg"
-    images_files = os.listdir(images_folder)
-    images_files = [f for f in images_files if f.startswith(animal_choice.lower()) and f.endswith(".jpg") and breed_choice.lower() in f.lower()]
     
-    if len(images_files) > 0:
-        for image_file in images_files:
-            image_path = os.path.join(images_folder, image_file)
-            st.image(image_path, caption=image_file, width=300)
-    else:
-        st.write(f"No se encontraron imágenes para {breed_choice}")
+   
     
 
 def write_page_3():
