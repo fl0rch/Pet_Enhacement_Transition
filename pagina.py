@@ -324,37 +324,9 @@ def write_restricted_page():
                 with st.spinner("Cargando datos..."):
                     st_lottie(animation, speed=0.5, width=200, height=200)
                 
-                '''pet_model = joblib.load('pet_model.pkl')
-                img_array = keras.utils.img_to_array(image)
-                img_array = img_array/255.
-                img_array = tf.image.resize(img_array, [256, 256])
-                pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
-            
-                breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
-                            'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
-                            'American Hairless', 'Airedale', 'Bull Terrier', 'Border Collie',
-                            'Borzoi', 'Bloodhound', 'Bluetick', 'Bull Mastiff', 'Blenheim',
-                            'Boxer', 'Boston Terrier', 'Bichon Frise', 'Chinese Crested',
-                            'Chihuahua', 'Cocker', 'Chow', 'Collie', 'Corgi', 'Cockapoo',
-                            'Clumber', 'Cairn', 'Bulldog', 'German Sheperd',
-                            'Golden Retriever', 'Great Dane', 'Dhole', 'Coyote',
-                            'French Bulldog', 'Doberman', 'Elk Hound', 'Dalmation', 'Dingo',
-                            'Great Perenees', 'Labradoodle', 'Irish Spaniel', 'Greyhound',
-                            'Lhasa', 'Groenendael', 'Japanese Spaniel', 'Irish Wolfhound',
-                            'Komondor', 'Labrador', 'Pomeranian', 'Pit Bull', 'Pekinese',
-                            'Rhodesian', 'Maltese', 'Mex Hairless', 'Malinois', 'Poodle',
-                            'Pug', 'Newfoundland', 'Shih-Tzu', 'Shiba Inu', 'Rottweiler',
-                            'Siberian Husky', 'Scotch Terrier', 'Vizsla', 'Saint Bernard',
-                            'Shar_Pei', 'Schnauzer', 'Yorkie', 'Bombay', 'Bengal',
-                            'American Shorthair', 'Maine Coon', 'Egyptian Mau', 'Abyssinian',
-                            'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
-                            'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
-            
-                prediction = breed_list[pred]'''
-                
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(image)
-                st.write(f'The breed is {prediction}')
+                st.write(f'The breed is {pred}')
                 # df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
 
                 
