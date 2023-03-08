@@ -58,7 +58,7 @@ def write_page_1():
     
     components.iframe("https://embed.lottiefiles.com/animation/43901")
     
-    with open("dog.json") as source:
+    with open("dog.json", "r") as source:
         dog = json.load(source)
     
     st.lottie(dog)
