@@ -54,6 +54,7 @@ def write_page_1():
     st.write("- Conviértete en voluntario y ayúdanos con las tareas diarias en la protectora.")
     st.write("- Comparte nuestro mensaje en tus redes sociales para ayudarnos a llegar a más personas.")
     
+  components.iframe("https://embed.lottiefiles.com/animation/43901")
 
     st.header("Síguenos en redes sociales")
     st.write("Síguenos en nuestras redes sociales para estar al tanto de las últimas noticias y novedades de nuestra protectora:")
