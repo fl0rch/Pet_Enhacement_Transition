@@ -80,8 +80,7 @@ available_images = ['Beagle_09.jpg', 'Boxer_09.jpg', 'Lhasa_04.jpg', 'Maine_Coon
 
 
 def show_image(breed_choice):
-    # Reemplazar los espacios por guiones bajos y convertir a minúsculas
-    breed_choice = breed_choice.replace(' ', '_').lower()
+
     
     # Buscar si existe la imagen correspondiente a la raza
     if breed_choice + '.jpg' in available_images:
