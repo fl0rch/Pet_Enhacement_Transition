@@ -306,7 +306,7 @@ def write_restricted_page():
                 with st.spinner("Haciendo predicción"):
                     prediction = modelo.predict(imagen)
                     time.sleep(2)  # simulación de la predicción
-               st_lottie(animation, speed=0, width=200, height=200, key="animation")
+                    st_lottie(animation, speed=0, width=200, height=200, key="animation")
                     pet_model = joblib.load('pet_model.pkl')
                     img_array = keras.utils.img_to_array(image)
                     img_array = img_array/255.
