@@ -24,7 +24,7 @@ from bs4 import BeautifulSoup
 import json
 import streamlit_lottie
 from streamlit_lottie import st_lottie
-
+import time 
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
@@ -299,12 +299,14 @@ def write_restricted_page():
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
             with open("animations/prediction.json") as f:
-              animation = json.load(f)
+               animation = json.load(f)
             
             if st.button('Guardar'):
-                with st.spinner("Cargando datos..."):
-                    st_lottie(animation, speed=1, width=100, height=100)
-                    st.success('Se ha hecho la predicción exitosamente')
+                animation_id = st_lottie(animation, speed=1, width=200, height=200, key="animation")
+                with st.spinner("Haciendo predicción"):
+                    prediction = modelo.predict(imagen)
+                    time.sleep(2)  # simulación de la predicción
+               st_lottie(animation, speed=0, width=200, height=200, key="animation")
                     pet_model = joblib.load('pet_model.pkl')
                     img_array = keras.utils.img_to_array(image)
                     img_array = img_array/255.
