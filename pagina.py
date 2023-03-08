@@ -56,9 +56,9 @@ def write_page_1():
     st.write("- Comparte nuestro mensaje en tus redes sociales para ayudarnos a llegar a más personas.")
     
     
-    st.markdown('<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>', unsafe_allow_html=True)
-    st.markdown('<lottie-player src="https://assets4.lottiefiles.com/packages/lf20_syqnfe7c.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop controls autoplay></lottie-player>', unsafe_allow_html=True)
     
+    st.html_file("dog.html")
+
     
     st.header("Síguenos en redes sociales")
     st.write("Síguenos en nuestras redes sociales para estar al tanto de las últimas noticias y novedades de nuestra protectora:")
