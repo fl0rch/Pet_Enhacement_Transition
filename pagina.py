@@ -78,7 +78,7 @@ df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
 IMG_DIR = 'img_predict'
 
-filename = f"{raza_choice}_{random.randint(1, 10):02}.jpg"
+filename = f"{breed_choice}_{random.randint(1, 10):02}.jpg"
 img_path = os.path.join(IMG_DIR, filename)
 if os.path.exists(img_path):
     # Mostrar la imagen
@@ -86,7 +86,7 @@ if os.path.exists(img_path):
     st.image(img, caption=filename)
 else:
     # Mostrar mensaje de que la imagen no está disponible
-    st.warning(f"La imagen de la raza '{raza_choice}' no está disponible.")
+    st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
 
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
