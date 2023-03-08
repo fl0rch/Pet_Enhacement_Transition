@@ -105,6 +105,17 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay algunas fotos de los", breed_choice,"s disponibles para su adopción:")
     
+    images_folder = "img_predict"
+    images_files = os.listdir(images_folder)
+    images_files = [f for f in images_files if f.startswith(animal_choice.lower()) and f.endswith(".jpg") and breed_choice.lower() in f.lower()]
+    
+    if len(images_files) > 0:
+        for image_file in images_files:
+            image_path = os.path.join(images_folder, image_file)
+            st.image(image_path, caption=image_file, width=300)
+    else:
+        st.write(f"No se encontraron imágenes para {breed_choice} {animal_choice}")
+    
 
 def write_page_3():
     st.write("<h2>Donar:</h2>", unsafe_allow_html=True)
