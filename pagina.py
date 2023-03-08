@@ -298,7 +298,7 @@ def write_restricted_page():
             
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
-           with open("animations/prediction.json") as f:
+            with open("animations/prediction.json") as f:
                animation = json.load(f)
 
            if st.button('Guardar'):
