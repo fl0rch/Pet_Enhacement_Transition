@@ -304,6 +304,7 @@ def write_restricted_page():
             if st.button('Guardar'):
                 with st.spinner("Cargando datos..."):
                     st_lottie(animation, speed=1, width=100, height=100)
+                    st.success('Se ha hecho la predicción exitosamente')
                     pet_model = joblib.load('pet_model.pkl')
                     img_array = keras.utils.img_to_array(image)
                     img_array = img_array/255.
