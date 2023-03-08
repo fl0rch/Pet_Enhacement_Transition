@@ -21,7 +21,7 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 from bs4 import BeautifulSoup
-from streamlit_lottie import stl
+from streamlit_lottie import st_lottie
 import json
 
 
