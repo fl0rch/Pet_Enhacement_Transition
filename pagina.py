@@ -23,6 +23,7 @@ import numpy as np
 from bs4 import BeautifulSoup
 import json
 import streamlit_lottie
+from streamlit_lottie import st_lottie
 
 
 
