@@ -57,7 +57,7 @@ def write_page_1():
     st.write("- Conviértete en voluntario y ayúdanos con las tareas diarias en la protectora.")
     st.write("- Comparte nuestro mensaje en tus redes sociales para ayudarnos a llegar a más personas.")
     
-    with open("dog.json") as source:
+    with open("animations/dog.json") as source:
      dog = json.load(source)
     st_lottie(dog, width=200, height=200, speed=1.5)
 
@@ -70,7 +70,7 @@ def write_page_1():
     st.markdown('<i class="fa fa-instagram"></i> [Instagram](https://www.instagram.com/mi_protectora)', unsafe_allow_html=True)
     st.markdown('<i class="fa fa-twitter"></i> [Twitter](https://www.twitter.com/mi_protectora)', unsafe_allow_html=True)
         
-    with open("cat.json") as source:
+    with open("animations/cat.json") as source:
      dog = json.load(source)
     st_lottie(dog, width=200, height=200, speed=1)
     
