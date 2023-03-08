@@ -10,4 +10,4 @@ tensorflow
 keras
 numpy
 bs4
-streamlit_lottie==0.5.0
+streamlit_lottie
