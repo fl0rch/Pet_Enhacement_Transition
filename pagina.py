@@ -309,7 +309,7 @@ def write_restricted_page():
                 st_lottie(animation, speed=0, width=200, height=200, key="animation1")
                 st.success('¡Predicción hecha con éxito!')
             else:
-                    st_lottie(animation, speed=0, width=200, height=200, key="animation1")
+                st_lottie(animation, speed=0, width=200, height=200, key="animation1")
                     pet_model = joblib.load('pet_model.pkl')
                     img_array = keras.utils.img_to_array(image)
                     img_array = img_array/255.
