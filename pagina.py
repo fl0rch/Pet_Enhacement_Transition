@@ -325,7 +325,7 @@ def write_restricted_page():
                     st_lottie(animation, speed=0.5, width=200, height=200)
                 
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
-                pred = model.predict(image)
+                pred = model.predict(uploaded_file)
                 st.write(f'The breed is {pred}')
                 # df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
 
