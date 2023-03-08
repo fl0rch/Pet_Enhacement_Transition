@@ -76,20 +76,17 @@ def write_page_1():
     
 df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
-available_images = ['Beagle_09.jpg', 'Boxer_09.jpg', 'Lhasa_04.jpg', 'Maine_Coon_05.jpg', 'Sphynx_4.jpg']
+IMG_DIR = 'img_predict'
 
-
-def show_image(breed_choice):
-
-    
-    # Buscar si existe la imagen correspondiente a la raza
-    if breed_choice + '.jpg' in available_images:
-        # Si existe, mostrar la imagen
-        img_path = os.path.join('img_predict', breed_choice + '.jpg')
-        st.image(img_path)
-    else:
-        # Si no existe, mostrar mensaje de que la imagen no está disponible
-        st.write(f"Lo siento, no hay imágenes disponibles para la raza {breed_choice}")
+filename = f"{raza_choice}_{random.randint(1, 10):02}.jpg"
+img_path = os.path.join(IMG_DIR, filename)
+if os.path.exists(img_path):
+    # Mostrar la imagen
+    img = Image.open(img_path)
+    st.image(img, caption=filename)
+else:
+    # Mostrar mensaje de que la imagen no está disponible
+    st.warning(f"La imagen de la raza '{raza_choice}' no está disponible.")
 
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -120,7 +117,7 @@ def write_page_2():
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
-    show_image(breed_choice)
+   
     
     
     
