@@ -26,6 +26,7 @@ import streamlit_lottie
 from streamlit_lottie import st_lottie
 import time
 import random
+from model import Model
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
@@ -309,12 +310,13 @@ def write_restricted_page():
 
         # Si el usuario ha cargado una imagen, mostrarla en la página
         if uploaded_file is not None:
-            #image = Image.open(uploaded_file)
-            image = keras.preprocessing.image.load_img(uploaded_file)
+            image = Image.open(uploaded_file)
+            #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
+            
             with open("animations/prediction.json") as f:
                animation = json.load(f)
 
@@ -322,7 +324,7 @@ def write_restricted_page():
                 with st.spinner("Cargando datos..."):
                     st_lottie(animation, speed=0.5, width=200, height=200)
                 
-                pet_model = joblib.load('pet_model.pkl')
+                '''pet_model = joblib.load('pet_model.pkl')
                 img_array = keras.utils.img_to_array(image)
                 img_array = img_array/255.
                 img_array = tf.image.resize(img_array, [256, 256])
@@ -348,9 +350,12 @@ def write_restricted_page():
                             'American Bobtail', 'Persian', 'British Shorthair', 'Birman',
                             'Ragdoll', 'Siamese', 'Russian Blue', 'Tuxedo', 'Sphynx' ]
             
-                prediction = breed_list[pred]
+                prediction = breed_list[pred]'''
+                
+                model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
+                pred = model.predict(image)
                 st.write(f'The breed is {prediction}')
-                                           #df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+                # df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
 
                 
     else:
@@ -370,14 +375,6 @@ def write_restricted_page():
                 write_restricted_page()
             else:
                 st.error("Contraseña incorrecta.")
-
-         # Agregar aquí el código para predecir si es un perro o un gato
-
-
-
-    
-
-
 
 
 def main():
