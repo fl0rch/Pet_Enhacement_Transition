@@ -72,7 +72,7 @@ def write_page_1():
         
     with open("cat.json") as source:
      dog = json.load(source)
-    st_lottie(dog, width=200, height=200, speed=1.5)
+    st_lottie(dog, width=200, height=200, speed=1)
     
 df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
