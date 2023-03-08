@@ -311,11 +311,11 @@ def write_restricted_page():
             else:
                 st_lottie(animation, speed=0, width=200, height=200, key="animation1")
                 
-                    pet_model = joblib.load('pet_model.pkl')
-                    img_array = keras.utils.img_to_array(image)
-                    img_array = img_array/255.
-                    img_array = tf.image.resize(img_array, [256, 256])
-                    pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
+                pet_model = joblib.load('pet_model.pkl')
+                img_array = keras.utils.img_to_array(image)
+                img_array = img_array/255.
+                img_array = tf.image.resize(img_array, [256, 256])
+                pred = np.argmax(pet_model.predict(np.expand_dims(img_array, axis=0)))
             
                     breed_list = [ 'African Wild Dog', 'Basenji', 'American Spaniel', 'Afghan',
                             'Basset', 'Bearded Collie', 'Beagle', 'Bermaise',
