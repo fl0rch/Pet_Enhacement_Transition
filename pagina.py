@@ -303,7 +303,7 @@ def write_restricted_page():
 
             if st.button('Guardar'):
                 with st.spinner("Cargando datos..."):
-                    st_lottie(animation, speed=1, width=100, height=100)
+                    st_lottie(animation, speed=0.5, width=200, height=200)
                 
                 pet_model = joblib.load('pet_model.pkl')
                 img_array = keras.utils.img_to_array(image)
