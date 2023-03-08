@@ -21,7 +21,6 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 from bs4 import BeautifulSoup
-from streamlit_lottie import st_lottie
 import json
 
 
@@ -56,7 +55,7 @@ def write_page_1():
     st.write("- Conviértete en voluntario y ayúdanos con las tareas diarias en la protectora.")
     st.write("- Comparte nuestro mensaje en tus redes sociales para ayudarnos a llegar a más personas.")
     
-    components.iframe("https://embed.lottiefiles.com/animation/43901")
+   
     
     with open("dog.json", "r") as source:
         dog = json.load(source)
