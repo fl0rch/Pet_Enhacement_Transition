@@ -24,7 +24,8 @@ from bs4 import BeautifulSoup
 import json
 import streamlit_lottie
 from streamlit_lottie import st_lottie
-import time 
+import time
+import random
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
