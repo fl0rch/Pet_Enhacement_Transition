@@ -304,10 +304,11 @@ def write_restricted_page():
 
             if st.button('Guardar'):
                 animation_id = st_lottie(animation, speed=1, width=200, height=200, key="animation")
-                with st.spinner("Haciendo predicción"):
+                 with st.spinner("Haciendo predicción"):
                     time.sleep(2)  # simulación de la predicción
                     animation_widget.stop()
                     st_lottie(animation, speed=0, width=200, height=200, key="animation1")
+                    st.success('¡Predicción hecha con éxito!')
             else:
                     st_lottie(animation, speed=0, width=200, height=200, key="animation1")
                     pet_model = joblib.load('pet_model.pkl')
