@@ -69,7 +69,10 @@ def write_page_1():
     st.markdown('<i class="fa fa-facebook-square"></i> [Facebook](https://www.facebook.com/mi_protectora)', unsafe_allow_html=True)
     st.markdown('<i class="fa fa-instagram"></i> [Instagram](https://www.instagram.com/mi_protectora)', unsafe_allow_html=True)
     st.markdown('<i class="fa fa-twitter"></i> [Twitter](https://www.twitter.com/mi_protectora)', unsafe_allow_html=True)
-
+        
+    with open("cat.json") as source:
+     dog = json.load(source)
+    st_lottie(dog, width=200, height=200, speed=1.5)
     
 df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
