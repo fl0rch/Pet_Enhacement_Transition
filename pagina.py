@@ -304,6 +304,8 @@ def write_restricted_page():
             if st.button('Guardar'):
                animation_widget = st_lottie(animation, speed=1, width=200, height=200, key="animation")
                with st.spinner("Haciendo predicción"):
+                    time.sleep(2)  # simulación de la predicción
+                    st.success('¡Predicción hecha con éxito!')
             else:
                 st_lottie(animation, speed=0, width=200, height=200, key="animation1")
                 
