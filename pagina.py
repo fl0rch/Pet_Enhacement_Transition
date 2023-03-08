@@ -114,7 +114,7 @@ def write_page_2():
             image_path = os.path.join(images_folder, image_file)
             st.image(image_path, caption=image_file, width=300)
     else:
-        st.write(f"No se encontraron imágenes para {breed_choice} {animal_choice}")
+        st.write(f"No se encontraron imágenes para {breed_choice}")
     
 
 def write_page_3():
