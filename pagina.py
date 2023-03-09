@@ -117,16 +117,16 @@ def write_page_2():
     
 
     if 'pet_data' in st.session_state:
-      pet_data = st.session_state.pet_data
-      if pet_data["prediction"] == breed_selected:
+     pet_data = st.session_state.pet_data
+     if pet_data["prediction"] == breed_selected:
         st.write(pet_data["name"])
         st.write(pet_data["description"])
         st.write(pet_data["prediction"])
         st.write(pet_data["path"])
-      else:
+     else:
         st.write("La raza seleccionada no coincide con la predicción realizada anteriormente.")
-   else:
-    st.write("No se encontraron datos de mascota en la sesión del usuario.")
+    else:
+     st.write("No se encontraron datos de mascota en la sesión del usuario.")
      
     
    
