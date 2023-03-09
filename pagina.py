@@ -77,7 +77,7 @@ def write_page_1():
 
 
 IMG_DIR = 'img_predict'
-state = SessionState.get(df_adopted=pd.DataFrame()
+
 
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
