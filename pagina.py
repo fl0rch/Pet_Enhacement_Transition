@@ -332,7 +332,7 @@ def write_restricted_page():
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
                 
                 st.write(df_adopted)
-                state.df_adopted = df_adopted
+                
 
                 
     else:
