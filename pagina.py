@@ -40,6 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
+df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -75,7 +76,7 @@ def write_page_1():
      dog = json.load(source)
     st_lottie(dog, width=200, height=200, speed=1)
     
-df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+
 
 IMG_DIR = 'img_predict'
 
