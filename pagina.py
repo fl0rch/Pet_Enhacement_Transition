@@ -40,8 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
-global df_adopted
-df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -111,6 +110,8 @@ def write_page_2():
     breed_choice = st.selectbox("¿De qué raza te gustaría adoptar?", breeds[animal_choice])
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
+    
+    df_adopted = df_adopted
     
     for index, row in df_adopted.iterrows():
       if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
@@ -313,7 +314,7 @@ def write_restricted_page():
             #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
-            
+            df_adopted = df_adopted
             
 
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
@@ -359,6 +360,7 @@ def write_restricted_page():
 
 def main():
     
+    df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
     page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
 
     if page == PAGE_1:
