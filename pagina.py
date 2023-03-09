@@ -83,7 +83,6 @@ IMG_DIR = 'img_predict'
 
 def write_page_2():
     global df_adopted
-    df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
@@ -116,7 +115,7 @@ def write_page_2():
     
     
     for index, row in df_adopted.iterrows():
-        if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
+        if row['breed'] == breed_choice and row['path'] is not None and os.path.exists(IMG_DIR):
             # Mostrar la imagen
             img = Image.open(f"{IMG_DIR}/{row['path']}")
             st.image(img, caption=f"{breed_choice} imagen", width=300)
@@ -125,7 +124,7 @@ def write_page_2():
         else:
             # Mostrar mensaje de que la imagen no está disponible
             st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-    
+            st.write(df_adopted)
     
     
    
