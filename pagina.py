@@ -317,7 +317,7 @@ def write_restricted_page():
                     writer.writerow(data)
 
                 st.write("Datos guardados")
-                st.write(data)
+               
         
     else:
         # Mostrar la página de inicio de sesión
