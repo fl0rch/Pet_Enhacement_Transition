@@ -40,6 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
+global df_adopted
 df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
 
 def write_page_1():
