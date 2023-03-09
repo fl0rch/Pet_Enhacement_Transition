@@ -41,7 +41,7 @@ PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
 df_adopted = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
-latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
+
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -115,8 +115,8 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     st.write(df_adopted)
-    
-    forlatest_adopted = df_adopted.tail(1)
+    latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
+    for latest_adopted = df_adopted.tail(1)
 if not latest_adopted.empty:
     row = latest_adopted.iloc[0]
     if row['breed'] == breed_choice and row['path'] is not None and os.path.exists(IMG_DIR):
