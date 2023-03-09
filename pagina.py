@@ -40,7 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
-
+df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -316,7 +316,6 @@ def write_restricted_page():
             with open("animations/prediction.json") as f:
                animation = json.load(f)
             
-            df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
 
             if st.button('Guardar'):
                 with st.spinner("Cargando datos..."):
