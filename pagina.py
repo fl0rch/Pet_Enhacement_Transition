@@ -118,7 +118,7 @@ def write_page_2():
 
     if 'pet_data' in st.session_state:
      pet_data = st.session_state.pet_data
-     if pet_data["prediction"] == breed_selected:
+     if pet_data["prediction"] == breed_choice:
         st.write(pet_data["name"])
         st.write(pet_data["description"])
         st.write(pet_data["prediction"])
