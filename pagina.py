@@ -111,19 +111,18 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    df_adopted = df_adopted
+   global df_adopted
     
     for index, row in df_adopted.iterrows():
-      if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
-        # Mostrar la imagen
-        img = Image.open(f"{IMG_DIR}/{row['path']}")
-        st.image(img, caption=f"{breed_choice} imagen", width=300)
-        st.write("Nombre", row['name'])
-        st.write("Descripción", row['description'])
-      else:
-        # Mostrar mensaje de que la imagen no está disponible
-        st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-
+        if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
+            # Mostrar la imagen
+            img = Image.open(f"{IMG_DIR}/{row['path']}")
+            st.image(img, caption=f"{breed_choice} imagen", width=300)
+            st.write("Nombre", row['name'])
+            st.write("Descripción", row['description'])
+        else:
+            # Mostrar mensaje de que la imagen no está disponible
+            st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
     
     
     
@@ -332,9 +331,10 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
+                global df_adopted
                 new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
-                
+
                 st.write(df_adopted)
                 
 
