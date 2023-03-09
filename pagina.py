@@ -118,7 +118,14 @@ def write_page_2():
     
     st.write(df_adopted)
 
-    st.session_state.saved_data = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
+    if 'pet_data' in st.session_state:
+      pet_data = st.session_state.pet_data
+      st.write(pet_data["name"])
+      st.write(pet_data["description"])
+      st.write(pet_data["prediction"])
+      st.write(pet_data["path"])
+    else:
+      st.write("No se encontraron datos de mascota en la sesión del usuario.")
      
     
    
@@ -329,20 +336,15 @@ def write_restricted_page():
                 st.write(f'La raza es {pred}')
                 
                  # Creamos un diccionario con los datos a guardar
-            pet_data = {
-             "name": name_pet,
-             "description": description_pet,
-             "prediction": pred,
-             "path": uploaded_file.name
-        }
+            if 'pet_data' not in st.session_state:
+               st.session_state.pet_data = {
+                "name": name_pet,
+                "description": description_pet,
+                "prediction": pred,
+                "path": uploaded_file.name
+                }
         
-        # Almacenamos el diccionario en una sesión de estado
-        if "adopted_pets" not in st.session_state:
-            st.session_state["adopted_pets"] = [pet_data]
-        else:
-            st.session_state["adopted_pets"].append(pet_data)
-        
-        st.write("Datos guardados con éxito")
+    
                 
 
                 
