@@ -82,6 +82,7 @@ IMG_DIR = 'img_predict'
 
 
 def write_page_2():
+    global df_adopted
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
@@ -111,7 +112,7 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    global df_adopted
+    
     
     for index, row in df_adopted.iterrows():
         if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
