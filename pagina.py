@@ -115,8 +115,8 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     st.write(df_adopted)
-    latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
-for latest_adopted = df_adopted.tail(1)
+    
+latest_adopted = df_adopted.tail(1)
 if not latest_adopted.empty:
     row = latest_adopted.iloc[0]
     if row['breed'] == breed_choice and row['path'] is not None and os.path.exists(IMG_DIR):
@@ -128,7 +128,6 @@ if not latest_adopted.empty:
     else:
         # Mostrar mensaje de que la imagen no está disponible
         st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-    
     
    
     
