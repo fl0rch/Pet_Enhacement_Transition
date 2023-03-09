@@ -128,9 +128,10 @@ def write_page_2(uploaded_file, name_pet, pred, description_pet):
       else:
         # Mostrar mensaje de que la imagen no está disponible
         st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-     new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
-     df_adopted = df_adopted.append(new_row, ignore_index=True)
-     st.write(df_adopted) 
+     
+    new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
+    df_adopted = df_adopted.append(new_row, ignore_index=True)
+    st.write(df_adopted) 
     
    
     
