@@ -336,10 +336,10 @@ def write_restricted_page():
                 st.write(f'La raza es {pred}')
                 
                 
-                   new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
-                   df_adopted = df_adopted.append(new_row, ignore_index=True)
+                new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
+                df_adopted = df_adopted.append(new_row, ignore_index=True)
 
-                   st.write(df_adopted)
+                st.write(df_adopted)
                 
 
                 
