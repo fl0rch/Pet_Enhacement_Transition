@@ -40,7 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
-
+df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -362,7 +362,7 @@ def write_restricted_page():
 
 def main():
     
-    df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
+    
     page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
 
     if page == PAGE_1:
