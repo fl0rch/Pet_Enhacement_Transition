@@ -40,6 +40,9 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
+global df_adopted
+df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
     st.write("<p>Somos una organización malagueña sin ánimo de lucro que se encarga de cuidar gatos y perros y darles un nuevo hogar.</p>", unsafe_allow_html=True)
@@ -310,8 +313,7 @@ def write_restricted_page():
             #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
-            global df_adopted
-            df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+            
             
 
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
