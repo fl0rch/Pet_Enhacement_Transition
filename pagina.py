@@ -29,7 +29,6 @@ import random
 from model import Model
 
 
-
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
 
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
@@ -40,8 +39,6 @@ PAGE_3 = "Donar"
 PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
-
-
 
 
 def write_page_1():
@@ -65,9 +62,6 @@ def write_page_1():
      dog = json.load(source)
     st_lottie(dog, width=200, height=200, speed=1.5)
 
-    
-    
-    
     st.header("Síguenos en redes sociales")
     st.write("Síguenos en nuestras redes sociales para estar al tanto de las últimas noticias y novedades de nuestra protectora:")
     st.markdown('<i class="fa fa-facebook-square"></i> [Facebook](https://www.facebook.com/mi_protectora)', unsafe_allow_html=True)
@@ -78,13 +72,9 @@ def write_page_1():
      dog = json.load(source)
     st_lottie(dog, width=200, height=200, speed=1)
     
-
-
-IMG_DIR = 'img_predict'
-
-
-
+    
 def write_page_2():
+    IMG_DIR = 'img_predict'
     df_adopted = pd.read_csv("adopted.csv")
    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -127,13 +117,10 @@ def write_page_2():
         else:
             # Mostrar mensaje de que la imagen no está disponible
             st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-
-
-     
     
-   
-    
+    df_adopted = ''
 
+    
 def write_page_3():
     st.write("<h2>Donar:</h2>", unsafe_allow_html=True)
     st.write("<p>Gracias por considerar una donación a nuestro refugio de animales.</p>", unsafe_allow_html=True)
@@ -160,7 +147,6 @@ def write_page_3():
     st.write("<p>Si estás interesado en ser voluntario, por favor ponte en contacto con nosotros.</p>", unsafe_allow_html=True)
 
 
-
 def write_page_4():
     st.write("<h2>Contacto:</h2>", unsafe_allow_html=True)
     st.write("<p>Para cualquier consulta, por favor contáctenos en el siguiente formulario:</p>", unsafe_allow_html=True)
@@ -171,11 +157,9 @@ def write_page_4():
         message = st.text_area('Mensaje')
         submit = st.form_submit_button(label='Enviar mensaje')
 
-    if submit:
-        
+    if submit:        
         yag = yagmail.SMTP('pruebapet262@gmail.com', 'ahcvndowfanwyesa')
-        
-        
+                
         to = 'petprotectora@gmail.com'
         subject = 'Mensaje desde Refugio de Animales P.E.T'
         body = f'Nombre: {name}\nEmail: {email}\nMensaje: {message}'
@@ -257,8 +241,6 @@ def send_volunteer_email(name, email):
     yag.send(to=to, subject=subject, contents=body)
 
 
-
-
 def write_page_5():
     st.header("Voluntariado")
     st.write("¡Únete a nuestro equipo de voluntarios y ayúdanos a mejorar el mundo!")
@@ -317,12 +299,8 @@ def write_restricted_page():
         # Si el usuario ha cargado una imagen, mostrarla en la página
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
-            #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
-            
-            
-
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
             
@@ -344,16 +322,7 @@ def write_restricted_page():
                     writer = csv.writer(f)
                     writer.writerow(data)
                 
-           
         
-    
-                
-
-                
-              
-                
-
-                
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
@@ -374,8 +343,7 @@ def write_restricted_page():
 
 
 def main():
-    
-    
+
     page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
 
     if page == PAGE_1:
