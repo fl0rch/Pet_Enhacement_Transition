@@ -85,6 +85,7 @@ IMG_DIR = 'img_predict'
 
 
 def write_page_2():
+    df_adopted = pd.read_csv("adopted.csv")
    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -116,17 +117,18 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
 
-    if 'pet_data' in st.session_state:
-     pet_data = st.session_state.pet_data
-     if pet_data["prediction"] == breed_choice:
-        st.write(pet_data["name"])
-        st.write(pet_data["description"])
-        st.write(pet_data["prediction"])
-        st.write(pet_data["path"])
-     else:
-        st.write("La raza seleccionada no coincide con la predicción realizada anteriormente.")
-    else:
-     st.write("No se encontraron datos de mascota en la sesión del usuario.")
+    for index, row in df_adopted.iterrows():
+        if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
+            # Mostrar la imagen
+            img = Image.open(f"{IMG_DIR}/{row['path']}")
+            st.image(img, caption=f"{breed_choice} imagen", width=300)
+            st.write("Nombre", row['name'])
+            st.write("Descripción", row['description'])
+        else:
+            # Mostrar mensaje de que la imagen no está disponible
+            st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+
+
      
     
    
@@ -336,14 +338,13 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
-                 # Creamos un diccionario con los datos a guardar
-            if 'pet_data' not in st.session_state:
-               st.session_state.pet_data = {
-                "name": name_pet,
-                "description": description_pet,
-                "prediction": pred,
-                "path": uploaded_file.read()
-                }
+                data = [name_pet, description_pet, pred, upload_file.name]
+                
+                with open("adopted.csv", "a") as f: 
+                    writer = csv.writer(f)
+                    writer.writerow(data)
+                
+           
         
     
                 
