@@ -83,6 +83,7 @@ IMG_DIR = 'img_predict'
 
 def write_page_2():
     global df_adopted
+    df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
