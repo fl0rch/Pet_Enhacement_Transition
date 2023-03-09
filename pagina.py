@@ -300,6 +300,7 @@ def authenticate(password):
 
 
 def write_restricted_page():
+    global df_adopted
     placeholder = st.empty()
     if st.session_state.get("logged_in"):
         placeholder.title("Predictor")
@@ -314,7 +315,7 @@ def write_restricted_page():
             #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
-            df_adopted = df_adopted
+            
             
 
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
@@ -332,7 +333,7 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
-                global df_adopted
+                
                 new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
 
