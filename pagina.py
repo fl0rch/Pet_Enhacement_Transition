@@ -282,9 +282,9 @@ def authenticate(password):
 
 
 def write_restricted_page():
-    global df_adopted
-    global lastest_adopted
+    breed = ""
     placeholder = st.empty()
+    
     if st.session_state.get("logged_in"):
         placeholder.title("Predictor")
         placeholder.write("Aquí puedes subir imágenes para predecir si es un perro o un gato.")
@@ -303,16 +303,16 @@ def write_restricted_page():
             with open("animations/prediction.json") as f:
                animation = json.load(f)
             
-
             if st.button('Guardar'):
                 with st.spinner("Cargando datos..."):
                     st_lottie(animation, speed=0.5, width=200, height=200)
                 
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
+                breed = pred
                 st.write(f'La raza es {pred}')
                 
-            data = [uploaded_file.name, name_pet, pred, description_pet]
+            data = [uploaded_file.name, name_pet, breed, description_pet]
 
             with open("adopted.csv", "a") as f: 
                 writer = csv.writer(f)
