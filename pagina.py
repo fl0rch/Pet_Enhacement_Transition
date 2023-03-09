@@ -362,7 +362,7 @@ def write_restricted_page():
 
 def main():
     
-    df_adopted = pd.dataframe(columns=["path","name","breed","description"])
+    df_adopted = pd.DataFrame(columns=["path","name","breed","description"])
     page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
 
     if page == PAGE_1:
