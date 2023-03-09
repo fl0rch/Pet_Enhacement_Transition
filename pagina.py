@@ -114,7 +114,7 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    
+    st.write(df_adopted)
     
     for index, row in df_adopted.iterrows():
         if row['breed'] == breed_choice and row['path'] is not None and os.path.exists(IMG_DIR):
