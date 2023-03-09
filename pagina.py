@@ -107,18 +107,16 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
 
-    for index, row in df_adopted.iterrows():
-        if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
+    if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
+        for index, row in df_adopted.iterrows():
             # Mostrar la imagen
             img = Image.open(f"{IMG_DIR}/{row['path']}")
             st.image(img, caption=f"{breed_choice} imagen", width=300)
             st.write("**Nombre:**", row['name'])
             st.write("**Descripción:**", row['description'])
-        else:
-            # Mostrar mensaje de que la imagen no está disponible
-            st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-    
-    df_adopted = ''
+    else:
+        # Mostrar mensaje de que la imagen no está disponible
+        st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
 
     
 def write_page_3():
@@ -260,7 +258,6 @@ def write_page_5():
         submit_button = st.form_submit_button(label="Enviar formulario")
 
     if submit_button:
-        
         volunteer = {
             "nombre": nombre,
             "email": email,
