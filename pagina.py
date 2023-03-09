@@ -124,7 +124,7 @@ def write_page_2():
         else:
             # Mostrar mensaje de que la imagen no está disponible
             st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-            st.write(df_adopted)
+            st.write(globals()['df_adopted'])
     
     
    
