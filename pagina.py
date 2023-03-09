@@ -306,6 +306,7 @@ def authenticate(password):
 
 def write_restricted_page():
     global df_adopted
+    global lastest_adopted
     placeholder = st.empty()
     if st.session_state.get("logged_in"):
         placeholder.title("Predictor")
