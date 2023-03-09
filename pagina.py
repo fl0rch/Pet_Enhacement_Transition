@@ -81,6 +81,11 @@ def write_page_1():
 
 IMG_DIR = 'img_predict'
 
+def save_pet_data(name_pet, breed_pet, description_pet, image_file):
+    st.session_state.name_pet = name_pet
+    st.session_state.breed_pet = breed_pet
+    st.session_state.description_pet = description_pet
+    st.session_state.image_file = image_file
 
 def write_page_2():
    
@@ -335,6 +340,7 @@ def write_restricted_page():
                 state.name_pet = name_pet
                 state.pred = pred
                 state.description_pet = description_pet
+                save_pet_data(name_pet, pred, description_pet, uploaded_file)
                 
 
                 
