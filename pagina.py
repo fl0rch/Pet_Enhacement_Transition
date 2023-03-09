@@ -27,7 +27,7 @@ from streamlit_lottie import st_lottie
 import time
 import random
 from model import Model
-import SessionState
+
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
 
