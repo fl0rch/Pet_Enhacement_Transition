@@ -41,6 +41,7 @@ PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
 df_adopted = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
+lastest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
 
 
 def write_page_1():
@@ -128,10 +129,8 @@ def write_page_2():
       else:
         # Mostrar mensaje de que la imagen no está disponible
         st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+    return lastest_adopted
      
-    new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
-    df_adopted = df_adopted.append(new_row, ignore_index=True)
-    st.write(df_adopted) 
     
    
     
