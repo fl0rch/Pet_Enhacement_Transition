@@ -282,7 +282,6 @@ def authenticate(password):
 
 
 def write_restricted_page():
-    breed = ""
     placeholder = st.empty()
     
     if st.session_state.get("logged_in"):
@@ -309,16 +308,15 @@ def write_restricted_page():
                 
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
-                breed = pred
                 st.write(f'La raza es {pred}')
                 
-            data = [uploaded_file.name, name_pet, breed, description_pet]
+                data = [uploaded_file.name, name_pet, breed, description_pet]
 
-            with open("adopted.csv", "a") as f: 
-                writer = csv.writer(f)
-                writer.writerow(data)
-           
-            st.write("Datos guardados")
+                with open("adopted.csv", "a") as f: 
+                    writer = csv.writer(f)
+                    writer.writerow(data)
+
+                st.write("Datos guardados")
         
     else:
         # Mostrar la página de inicio de sesión
