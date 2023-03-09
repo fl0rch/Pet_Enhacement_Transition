@@ -11,4 +11,3 @@ keras
 numpy
 bs4
 streamlit_lottie
-SessionState
