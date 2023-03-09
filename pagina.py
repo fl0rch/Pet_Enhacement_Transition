@@ -82,7 +82,7 @@ def write_page_1():
 IMG_DIR = 'img_predict'
 
 
-def write_page_2():
+def write_page_2(uploaded_file.name, name_pet, pred, description_pet):
     global latest_adopted
     global df_adopted
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -128,6 +128,9 @@ def write_page_2():
       else:
         # Mostrar mensaje de que la imagen no está disponible
         st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+     new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
+     df_adopted = df_adopted.append(new_row, ignore_index=True)
+     st.write(df_adopted) 
     
    
     
