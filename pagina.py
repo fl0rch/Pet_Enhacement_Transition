@@ -115,7 +115,6 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    st.write(df_adopted)
 
     if 'pet_data' in st.session_state:
       pet_data = st.session_state.pet_data
