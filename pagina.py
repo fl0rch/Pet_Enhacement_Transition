@@ -40,8 +40,8 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
-df_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
-latest_adopted = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
+df_adopted = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
+latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
 
 def write_page_1():
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
@@ -84,7 +84,7 @@ IMG_DIR = 'img_predict'
 
 def write_page_2():
     global latest_adopted
-    df_adopted = df_adopted
+    global df_adopted
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
