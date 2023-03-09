@@ -115,7 +115,7 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     st.write(df_adopted)
-    latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
+    latest_adopted = pd.concat([df_adopted, pd.DataFrame({ "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
     latest_adopted = df_adopted.tail(1)
     if not latest_adopted.empty:
       row = latest_adopted.iloc[0]
