@@ -83,14 +83,7 @@ def write_page_1():
 
 IMG_DIR = 'img_predict'
 
-def get_state():
-    return SessionState.get(name='', uploaded_file=None, breed_choice='')
 
-def save_pet_data(name_pet, breed_pet, description_pet, image_file):
-    st.session_state.name_pet = name_pet
-    st.session_state.breed_pet = breed_pet
-    st.session_state.description_pet = description_pet
-    st.session_state.image_file = image_file
 
 def write_page_2():
    
