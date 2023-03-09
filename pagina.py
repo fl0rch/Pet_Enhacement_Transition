@@ -122,8 +122,8 @@ def write_page_2():
             # Mostrar la imagen
             img = Image.open(f"{IMG_DIR}/{row['path']}")
             st.image(img, caption=f"{breed_choice} imagen", width=300)
-            st.write("Nombre", row['name'])
-            st.write("Descripción", row['description'])
+            st.write("**Nombre:**", row['name'])
+            st.write("**Descripción:**", row['description'])
         else:
             # Mostrar mensaje de que la imagen no está disponible
             st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
