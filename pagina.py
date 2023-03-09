@@ -334,7 +334,7 @@ def write_restricted_page():
                 new_row = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
 
-                st.write(df_adopted)
+                
                 state = get_state()
                 state.uploaded_file = uploaded_file.name
                 state.name_pet = name_pet
