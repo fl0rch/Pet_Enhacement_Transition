@@ -27,7 +27,7 @@ from streamlit_lottie import st_lottie
 import time
 import random
 from model import Model
-
+import SessionState
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
 
@@ -77,6 +77,7 @@ def write_page_1():
 
 
 IMG_DIR = 'img_predict'
+state = SessionState.get(df_adopted=pd.DataFrame()
 
 def write_page_2():
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -308,7 +309,9 @@ def write_restricted_page():
             #image = keras.preprocessing.image.load_img(uploaded_file)
             st.image(image, caption="Imagen cargada por el usuario", use_column_width=True)
             
+            global df_adopted
             df_adopted = pd.DataFrame(columns=["path", "name", "breed", "description"])
+            
 
             name_pet = st.text_input("Nombre", placeholder="Toby", key="name_pet")
             description_pet = st.text_area("Descripción", placeholder="Es una mascota muy cariñosa y sociable.", key="desc_pet")
@@ -329,7 +332,7 @@ def write_restricted_page():
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
                 
                 st.write(df_adopted)
-                
+                state.df_adopted = df_adopted
 
                 
     else:
