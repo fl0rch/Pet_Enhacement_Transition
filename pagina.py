@@ -338,7 +338,7 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
-                data = [uploaded_file.name, name_pat, pred, description_pet]
+                data = [uploaded_file.name, name_pet, pred, description_pet]
                 
                 with open("adopted.csv", "a") as f: 
                     writer = csv.writer(f)
