@@ -82,7 +82,7 @@ def write_page_1():
 IMG_DIR = 'img_predict'
 
 
-def write_page_2(uploaded_file, name_pet, pred, description_pet):
+def write_page_2():
     global latest_adopted
     global df_adopted
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
