@@ -106,7 +106,6 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-   from streamlit.caching import cache
 
 @st.cache()
 def mostrar_mascota(row, breed_choice, IMG_DIR):
