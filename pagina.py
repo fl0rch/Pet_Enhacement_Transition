@@ -27,6 +27,7 @@ from streamlit_lottie import st_lottie
 import time
 import random
 from model import Model
+import SessionState
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
@@ -80,6 +81,9 @@ def write_page_1():
 
 
 IMG_DIR = 'img_predict'
+
+def get_state():
+    return SessionState.get(name='', uploaded_file=None, breed_choice='')
 
 def save_pet_data(name_pet, breed_pet, description_pet, image_file):
     st.session_state.name_pet = name_pet
