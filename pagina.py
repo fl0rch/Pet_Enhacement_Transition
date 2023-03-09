@@ -106,7 +106,10 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-   def mostrar_mascota(row):
+   from streamlit.caching import cache
+
+@st.cache()
+def mostrar_mascota(row, breed_choice, IMG_DIR):
     if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
         # Mostrar la imagen
         img = Image.open(f"{IMG_DIR}/{row['path']}")
@@ -121,7 +124,8 @@ def write_page_2():
 for index, row in df_adopted.iterrows():
     # Llamada a la función caché para mostrar la mascota
     with cache(key=row['id']):
-        mostrar_mascota(row)
+        mostrar_mascota(row, breed_choice, IMG_DIR)
+
 
     
 def write_page_3():
