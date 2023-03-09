@@ -116,7 +116,7 @@ def write_page_2():
     
     st.write(df_adopted)
     latest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
-    for latest_adopted = df_adopted.tail(1)
+for latest_adopted = df_adopted.tail(1)
 if not latest_adopted.empty:
     row = latest_adopted.iloc[0]
     if row['breed'] == breed_choice and row['path'] is not None and os.path.exists(IMG_DIR):
