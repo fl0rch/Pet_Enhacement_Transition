@@ -40,8 +40,7 @@ PAGE_4 = "Contacto"
 PAGE_5 = "Voluntariado"
 PAGE_6 = "Predictor"
 
-df_adopted = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
-lastest_adopted = pd.concat([df_adopted, pd.DataFrame({"path": [uploaded_file.name], "name": [name_pet], "breed": [pred], "description": [description_pet]})], ignore_index=True)
+
 
 
 def write_page_1():
@@ -84,8 +83,7 @@ IMG_DIR = 'img_predict'
 
 
 def write_page_2():
-    global latest_adopted
-    global df_adopted
+   
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
@@ -117,7 +115,7 @@ def write_page_2():
     
     st.write(df_adopted)
 
-    return lastest_adopted
+    st.session_state.saved_data = {"path": uploaded_file.name, "name": name_pet, "breed": pred, "description": description_pet}
      
     
    
@@ -332,6 +330,11 @@ def write_restricted_page():
                 df_adopted = df_adopted.append(new_row, ignore_index=True)
 
                 st.write(df_adopted)
+                state = get_state()
+                state.uploaded_file = uploaded_file
+                state.name_pet = name_pet
+                state.pred = pred
+                state.description_pet = description_pet
                 
 
                 
