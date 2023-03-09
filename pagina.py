@@ -331,7 +331,7 @@ def write_restricted_page():
 
                 st.write(df_adopted)
                 state = get_state()
-                state.uploaded_file = uploaded_file
+                state.uploaded_file = uploaded_file.name
                 state.name_pet = name_pet
                 state.pred = pred
                 state.description_pet = description_pet
