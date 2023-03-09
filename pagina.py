@@ -334,16 +334,25 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
-                
+                 # Creamos un diccionario con los datos a guardar
+            pet_data = {
+             "name": name_pet,
+             "description": description_pet,
+             "prediction": pred,
+             "path": uploaded_file.name
+        }
+        
+        # Almacenamos el diccionario en una sesión de estado
+        if "adopted_pets" not in st.session_state:
+            st.session_state["adopted_pets"] = [pet_data]
+        else:
+            st.session_state["adopted_pets"].append(pet_data)
+        
+        st.write("Datos guardados con éxito")
                 
 
                 
-                state = get_state()
-                state.uploaded_file = uploaded_file.name
-                state.name_pet = name_pet
-                state.pred = pred
-                state.description_pet = description_pet
-                save_pet_data(name_pet, pred, description_pet, uploaded_file)
+              
                 
 
                 
