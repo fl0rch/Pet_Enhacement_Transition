@@ -327,7 +327,10 @@ def write_restricted_page():
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
-                # df_adopted = df_adopted.append({"path":x, "name":name_pet, "breed":prediction, "desciption":description_pet}, ignore_index=True)
+                df_adopted.append({"path": uploaded_file.name, "name": name_pet, "breed": breed_prediction, "description": description_pet}, ignore_index=True)
+                
+                st.write(df_adopted)
+                
 
                 
     else:
