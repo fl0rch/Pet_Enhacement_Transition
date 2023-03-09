@@ -342,7 +342,7 @@ def write_restricted_page():
                 "name": name_pet,
                 "description": description_pet,
                 "prediction": pred,
-                "path": uploaded_file
+                "path": uploaded_file.read()
                 }
         
     
