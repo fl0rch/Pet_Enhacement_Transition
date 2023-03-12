@@ -1,55 +1,83 @@
 # P.E.T: Pet Enhacement Transition
 https://pet-animal-shelter.streamlit.app/
 
-## Descripción del proyecto TFM
-* Página web para una protectora de animales, basado en perros y gatos.
-* Se utilizara dos modelos: Uno para detectar si es perro o gato, y otro para detectar las características de las mascotas (tamaño, raza y edad)
-* También se utilizara la traducción automática para transformar la página de español a ingles.
+## Justificación y descripción del proyecto
+Se realizará un modelo para predecir razas de mascotas a partir de una imagen. Para ello
+se han utilizado dos *datasets* encontrados en kaggle, uno de *perro* y otro de *gatos*, que se
+han obtenido por separado pero trabajamos con los dos mezclados.
 
-## URL a la aplicación web
-https://diegovp97-tfmpet-pagina-evn7v5.streamlit.app/
+Para comprobar qué modelo se debería utilizar se ha trabajado con tres diferentes: *VGG19,
+RestNet50 e InceptionV3*.
 
-## Entrenamiento del modelo
-Se ha subido un fichero colab con el proceso seguido y explicado para el etrenamiento de los modelos (En estos momentos se encuentra a la mitad).
+Una vez se haya comprobado el modelo con mejor rendimiento (acierto cerca del 1 y
+pérdida cerca del -1) se guardará el modelo para su posterior uso en una página web.
 
-Por el momento se encuentra realizado los puntos:
-1. Obtención de los datos
-2. Descripción y limpieza de los datos
-3. Exploración y visualización de los datos
-4. Preparación de los datos para los algoritmos de Machine Learning
+La página web se ha realizado en la plataforma streamlit simulando una página real que
+podría utilizar una protectora. Tendrá varias pestañas con distinta información, pero los
+apartados a destacar son:
+* **Predictor**: Donde se subirá la imagen de una mascota con su nombre y una
+descripción y se guardaran estos datos junto con la predicción de la mascota.
+* **Adoptar un animal**: En este apartado se podrá seleccionar si queremos adoptar un
+perro o un gato y la raza de esta.
 
-## ¿Qué encontramos en la aplicación de Streamlit?
+Se ha decidido buscar las mascotas para adoptar según su raza ya que, a partir de esta, se
+sobreentiende si es perro o gato y si es de tamaño pequeño, mediano o grande.
 
-### Para empezar Tenemos la página de inicio
+Respecto al **NLP** se ha optado por la traducción de texto a dos idiomas (Inglés y Alemán).
 
-![image](https://user-images.githubusercontent.com/122355831/220755722-ce771e0b-37c5-4ef9-a72a-4019560d81ab.png?s=50)
+Y para el apartado de **Big Data** se ha optado por realizar una base de datos de voluntarios
+en *MongoDB*.
 
-![image](https://user-images.githubusercontent.com/122355831/220756477-41042d24-12d5-429b-902e-a6dd1fc02c2c.png?=50)
+Este proyecto se ha pensado para facilitar el trabajo de identificación a las protectoras de
+animales y fomentar la adopción
 
-Tenemos una pequeña introducción sobre nosotros, un apartado paea saber que puedes hacer por nosotros y nuestras redes sociales
+## Comparación de los modelos utilizados
+Para comparar los modelos se ha utilizado el historial de entrenamiento y las métricas
+obtenidas durante cada época.
 
-### Página 2: Adoptar a un animal
+Para mostrar las métricas, se han agrupado en dos gráficas:
+1. **Training and Validation Accuracy**: Va mostrando el acierto que ha ido teniendo
+cada modelo en cada época de entrenamiento y evaluación.
+2. **Training and Validation Loss**: Va mostrando la función de pérdida obtenida en cada
+época de entrenamiento y evaluación de los modelos.
 
-![image](https://user-images.githubusercontent.com/122355831/220757584-5cd45cbd-166c-4a8b-87ec-d19bcc511e81.png?=50)
+![image]()
 
-Esta página es un placeholder que cambiaremos cuando tengamos los modelos listos
+En las gráficas se puede ver que no todos han entrenado las mismas épocas, ni obtenido
+los mismos resultados:
+* **RestNet50**: Es el modelo que más épocas ha entrenado pero no el que tiene mejor
+resultado, ya que en *100* épocas el acierto es de *0.202* y su pérdida de *3.177* en la
+evaluación.
 
-### Página 3:
+* **VGG19**: Este modelo se quedaría a mitad de los otros dos, ya que en *49* épocas el
+acierto es de *0.678* y su pérdida de *1.066* en la evaluación.
 
-![image](https://user-images.githubusercontent.com/122355831/220758208-b51b7bad-6748-4684-9fc3-036089086027.png)
+* **InceptionV3**: Es el modelo con mejor resultado de los entrenados. Ha realizado *19*
+épocas, y a pesar de ser el que menos épocas ha realizado, obtiene un *0.914* de
+acierto y *0.358* de pérdida en la evaluación.
 
-En esta página tenemos un apartado de donaciones por si quieren donar algo tanto como materiales, comida, mantas o dinero
+Según los resultados observados, se ha utilizado el modelo **InceptionV3** para el uso de la página web.
 
-### Página 4:
-![image](https://user-images.githubusercontent.com/122355831/220758674-1adf1193-b9f6-4cfd-ad75-142f968ffadb.png?=50)
+## Procesamiento de Lenguaje Natural
+Hemos implementado DialogFlow en nuestra aplicación y le hemos puesto frases típicas de
+chatbot de una protectora como, háblame de tu protectora, quiero ser voluntario,
+donaciones, etc.
 
-![image](https://user-images.githubusercontent.com/122355831/220759063-f22367a3-8630-404a-81c7-71c9d7e5a97e.png?=50)
+El agente entiende las frases en español, inglés y alemán
 
 
-En esta página tenemos un formulario por si quieren hacer preguntas, que está programado para que se envie a un correo, luego tenemos un chatbot que todavia hay que programar
+## Muestra de la página web
+La aplicación se ha realizado en streamlit y voy a mostrar el contenido de algunas de las pestañas más importantes:
 
-### Página 5
+* **Adopción de mascotas**: En este apartado tenemos dos selectbox para que el usuario elija si quiere perro o gato y la raza. Sale del apartado de predicción, el nombre, la descripción y la imagen usada que se muestra en la pantalla para el cliente.
 
-![image](https://user-images.githubusercontent.com/122355831/220759329-959733aa-79a3-49d5-9e5e-eb79368843d7.png?=50)
+* **Voluntariado**: Un formulario donde te puedes registrar como voluntario, se guardará en la base de datos de mongodb y se enviará un email al correo de la protectora.
+    * **Guardado de datos en MongoDB**:
 
-En esta página tenemos un formulario que por un lado envia un correo al mismo que el de las preguntas y a la vez guarda los datos en un cluster de mongoDB
+    * **Correo enviado**:
+
+* Administración: Esta página solo está habilitada para los administradores de la
+página, es donde se harán las predicciones. Tendrá dos apartados:
+    * **Inicio de sesión**: Requerirá una contraseña para acceder al apartado de predicción. Si no se introduce una contraseña correcta, no se mostrará.
+
+    * **Predictor**: Una vez iniciada la sesión correctamente, permitirá subir una imagen, indicarle un nombre y una breve descripción de la mascota. Una vez se guarden estos datos, mostrará la raza predicha.

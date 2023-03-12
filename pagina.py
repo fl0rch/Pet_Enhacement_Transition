@@ -311,15 +311,11 @@ def write_restricted_page():
                 pred = model.predict(uploaded_file)
                 st.write(f'La raza es {pred}')
                 
-                data = [uploaded_file.name, name_pet, pred, description_pet]
+                df = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
+                df.loc[len(df)] = [uploaded_file.name, name_pet, pred, description_pet]
+                df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
-                with open("adopted.csv", "a") as f: 
-                    writer = csv.writer(f)
-                    writer.writerow(data)
-
-                st.write("Datos guardados")
-               
-        
+                st.write("Datos guardados")           
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
