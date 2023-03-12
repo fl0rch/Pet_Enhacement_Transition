@@ -108,3 +108,8 @@ La aplicación se ha realizado en streamlit y voy a mostrar el contenido de algu
     ![image](https://drive.google.com/uc?id=13zA-qknG7FXDymDg360CXBlzqyt7Xbdv)
 
     ![image](https://drive.google.com/uc?id=1cOvOO9yXbM1D8DrINkxQKRZzXOfoFuEL)
+    
+    ## Video
+    Como el video pesaba mucho se ha compartido su enlace desde Drive.
+    
+    https://drive.google.com/file/d/11xlm258nj6EXtyG0aYFJLR1JbShNuGee/view?usp=sharing
