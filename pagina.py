@@ -29,11 +29,22 @@ import random
 from model import Model
 
 
-st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
+st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:", menu_items={
+                   'Inicio': PAGE_1,
+                   'Adoptar un animal': PAGE_2,
+                   'Donar': PAGE_3,
+                   'Contacto': PAGE_4,
+                   'Voluntariado': PAGE_5,
+                   'Predictor': PAGE_6}, initial_sidebar_state='auto')
+st.markdown(f'<div style="text-align: center;">{st.session_state.current_page}</div>', unsafe_allow_html=True)
+
 
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
 
 PAGE_1 = "Inicio"
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = PAGE_1
+
 PAGE_2 = "Adoptar un animal"
 PAGE_3 = "Donar"
 PAGE_4 = "Contacto"
