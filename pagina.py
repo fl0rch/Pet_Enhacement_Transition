@@ -42,8 +42,6 @@ st.markdown(f'<div style="text-align: center;">{st.session_state.current_page}</
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
 
 PAGE_1 = "Inicio"
-if 'current_page' not in st.session_state:
-    st.session_state.current_page = PAGE_1
 
 PAGE_2 = "Adoptar un animal"
 PAGE_3 = "Donar"
