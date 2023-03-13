@@ -29,20 +29,29 @@ import random
 from model import Model
 
 
-st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:", menu_items={
-                   'Inicio': PAGE_1,
-                   'Adoptar un animal': PAGE_2,
-                   'Donar': PAGE_3,
-                   'Contacto': PAGE_4,
-                   'Voluntariado': PAGE_5,
-                   'Predictor': PAGE_6}, initial_sidebar_state='auto')
-st.markdown(f'<div style="text-align: center;">{st.session_state.current_page}</div>', unsafe_allow_html=True)
-
+st = st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:", menu_items={
+                       'Inicio': PAGE_1,
+                       'Adoptar un animal': PAGE_2,
+                       'Donar': PAGE_3,
+                       'Contacto': PAGE_4,
+                       'Voluntariado': PAGE_5,
+                       'Predictor': PAGE_6}, initial_sidebar_state='auto')
 
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
 
-PAGE_1 = "Inicio"
+session_state = st.session_state.setdefault('session_state', {})
+current_page = session_state.get('current_page', PAGE_1)
+selected_page = t.menu_items[current_page['name']]
 
+# Escribir el contenido de la página actual seleccionada
+selected_page['function']()
+
+# Actualizar la página actual si se selecciona otra página desde la barra lateral
+if selected_page != current_page:
+    session_state['current_page'] = selected_page['name']
+
+
+PAGE_1 = "Inicio"
 PAGE_2 = "Adoptar un animal"
 PAGE_3 = "Donar"
 PAGE_4 = "Contacto"
@@ -360,6 +369,13 @@ def main():
         write_page_5()
     elif page == PAGE_6:
         write_restricted_page()
+        
+PAGE_1 = {'name': 'Inicio', 'function': write_page_1}
+PAGE_2 = {'name': 'Adoptar un animal', 'function': write_page_2}
+PAGE_3 = {'name': 'Donar', 'function': write_page_3}
+PAGE_4 = {'name': 'Contacto', 'function': write_page_4}
+PAGE_5 = {'name': 'Voluntariado', 'function': write_page_5}
+PAGE_6 = {'name': 'Predictor', 'function': write_restricted_page}
     
 
 if __name__ == "__main__":
