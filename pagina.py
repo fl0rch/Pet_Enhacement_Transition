@@ -30,12 +30,12 @@ from model import Model
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:", menu_items={
-                   'Inicio': write_page_1(),
-                   'Adoptar un animal': write_page_2(),
-                   'Donar': write_page_3(),
-                   'Contacto': write_page_4(),
-                   'Voluntariado': write_page_5(),
-                   'Predictor': write_restricted_page()}, initial_sidebar_state='auto')
+                   'Inicio': PAGE_1,
+                   'Adoptar un animal': PAGE_2(),
+                   'Donar': PAGE_3(),
+                   'Contacto': PAGE_4(),
+                   'Voluntariado': PAGE_5(),
+                   'Predictor': PAGE_6)}, initial_sidebar_state='auto')
 st.markdown(f'<div style="text-align: center;">{st.session_state.current_page}</div>', unsafe_allow_html=True)
 
 
