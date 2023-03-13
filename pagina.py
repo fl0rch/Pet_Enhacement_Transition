@@ -28,6 +28,12 @@ import time
 import random
 from model import Model
 
+PAGE_1 = {'name': 'Inicio', 'function': write_page_1}
+PAGE_2 = {'name': 'Adoptar un animal', 'function': write_page_2}
+PAGE_3 = {'name': 'Donar', 'function': write_page_3}
+PAGE_4 = {'name': 'Contacto', 'function': write_page_4}
+PAGE_5 = {'name': 'Voluntariado', 'function': write_page_5}
+PAGE_6 = {'name': 'Predictor', 'function': write_restricted_page}
 
 st = st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:", menu_items={
                        'Inicio': PAGE_1,
@@ -370,12 +376,7 @@ def main():
     elif page == PAGE_6:
         write_restricted_page()
         
-PAGE_1 = {'name': 'Inicio', 'function': write_page_1}
-PAGE_2 = {'name': 'Adoptar un animal', 'function': write_page_2}
-PAGE_3 = {'name': 'Donar', 'function': write_page_3}
-PAGE_4 = {'name': 'Contacto', 'function': write_page_4}
-PAGE_5 = {'name': 'Voluntariado', 'function': write_page_5}
-PAGE_6 = {'name': 'Predictor', 'function': write_restricted_page}
+
     
 
 if __name__ == "__main__":
