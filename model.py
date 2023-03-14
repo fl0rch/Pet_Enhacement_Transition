@@ -24,8 +24,7 @@ class Model:
         pred = self.model.predict(img_preprocessed)
         pred = pred.argmax()
         
-        if pred not in self.classes:
-            return ''
+        
         
         return self.classes[pred]
     
