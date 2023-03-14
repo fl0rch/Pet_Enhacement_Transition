@@ -90,7 +90,7 @@ def write_page_2():
      git.Repo.clone_from(repo_url, repo_dir)
 
 # Directorio donde se encuentran las imágenes
-    img_dir = os.path.join(repo_dir, "img_predictor")
+    img_dir = os.path.join(repo_dir, "img_predict")
 
 # Mostrar las imágenes
     st.write("Imágenes disponibles:")
