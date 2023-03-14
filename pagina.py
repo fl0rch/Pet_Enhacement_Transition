@@ -82,7 +82,7 @@ def write_page_1():
     
     
 def write_page_2():
-    IMG_DIR = './img_predict'
+    IMG_DIR = '/img_predict'
     df_adopted = pd.read_csv("adopted.csv")
    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
