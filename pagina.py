@@ -82,7 +82,7 @@ def write_page_1():
     
     
 def write_page_2():
-    IMG_DIR = '/img_predict/'
+    IMG_DIR = '/img_predict'
     df_adopted = pd.read_csv("adopted.csv")
    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -116,6 +116,7 @@ def write_page_2():
     
 
     for index, row in df_adopted.iterrows():
+        print(row['path'])
         if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
             # Mostrar la imagen
             img = Image.open(f"{IMG_DIR}/{row['path']}")
