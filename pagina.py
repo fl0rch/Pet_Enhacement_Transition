@@ -120,7 +120,9 @@ def write_page_2():
     
     if not os.path.exists(repo_dir):
      git.Repo.clone_from(repo_url, repo_dir)
-
+     !git clone $repo_url
+        
+    script_dir = os.path.dirname(os.path.abspath(__file__))
     img_dir = os.path.join(repo_dir, "img_predict")
 
     for index, row in df_adopted.iterrows():
