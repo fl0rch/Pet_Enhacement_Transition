@@ -325,6 +325,7 @@ def write_restricted_page():
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
                 st.write("Datos guardados")
+                st.dataframe(df)
                 return
     else:
         # Mostrar la página de inicio de sesión
