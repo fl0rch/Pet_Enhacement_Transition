@@ -83,20 +83,20 @@ def write_page_1():
     
     
 def write_page_2():
-    repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
-    repo_dir = "img_predict"
-    if not os.path.exists(repo_dir):
-        git.Repo.clone_from(repo_url, repo_dir)
+    
+    repo_dir = "https://github.com/fl0rch/Pet_Enhacement_Transition"
+    IMG_DIR = os.path.join(repo_dir, "img_predictor")
 
-# Directorio donde se encuentran las imágenes
-img_dir = os.path.join(repo_dir, "img_predict")
+    image_names = os.listdir(IMG_DIR)
 
-# Mostrar las imágenes
-st.write("Imágenes disponibles:")
-for img_name in os.listdir(img_dir):
-    img_path = os.path.join(img_dir, img_name)
-    img = Image.open(img_path)
-    st.image(img, caption=img_name, width=300)
+    st.write("Imágenes disponibles:")
+    st.write(image_names)
+
+    for image_name in image_names:
+        image_path = os.path.join(IMG_DIR, image_name)
+        image = Image.open(image_path)
+        st.image(image, caption=image_name, width=300)
+
     IMG_DIR = 'img_predict'
     df_adopted = pd.read_csv("adopted.csv")
    
