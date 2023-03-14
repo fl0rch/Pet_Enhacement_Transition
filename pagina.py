@@ -48,6 +48,7 @@ PAGE_6 = "Predictor"
 
 
 def write_page_1():
+    write_page_background()
     st.write("<h1>Bienvenidos a la protectora P.E.T!</h1>", unsafe_allow_html=True)
     st.write("<p>Somos una organización malagueña sin ánimo de lucro que se encarga de cuidar gatos y perros y darles un nuevo hogar.</p>", unsafe_allow_html=True)
     st.header("Adopción")
@@ -360,7 +361,8 @@ def main():
         selected_page()
 
         
-
+def write_page_background():
+    stc.css("background: linear-gradient(to bottom, #ffffff, #f8f8f8); height: 100vh;")
     
 
 if __name__ == "__main__":
