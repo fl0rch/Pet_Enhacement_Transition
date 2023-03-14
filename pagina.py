@@ -316,6 +316,9 @@ def write_restricted_page():
                 
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
+                if pred not in ["dog", "cat"]:
+                st.error("La imagen no es de un perro o un gato")
+                return
                 st.write(f'La raza es {pred}')
                 
                 df = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
@@ -323,8 +326,7 @@ def write_restricted_page():
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
                 st.write("Datos guardados")
-            else:
-                st.error("La imagen cargada no es un perro ni un gato.")
+            
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
