@@ -133,6 +133,12 @@ def write_page_2():
      else:
         # Mostrar mensaje de que la imagen no está disponible
         st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+        
+        st.write('Otras imagenes disponibles')
+        for img_name in os.listdir(img_dir):
+            img_path = os.path.join(img_dir, img_name)
+            img = Image.open(img_path)
+            st.image(img, width=300)
 
 
 
