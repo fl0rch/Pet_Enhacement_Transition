@@ -322,7 +322,9 @@ def write_restricted_page():
                 df.loc[len(df)] = [uploaded_file.name, name_pet, pred, description_pet]
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
-                st.write("Datos guardados")           
+                st.write("Datos guardados")
+            else:
+                st.error("La imagen cargada no es un perro ni un gato.")
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
