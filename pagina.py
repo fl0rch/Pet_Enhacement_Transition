@@ -343,20 +343,22 @@ def write_restricted_page():
 
 def main():
 
-    page = st.sidebar.selectbox("Elige una pagina", [PAGE_1, PAGE_2, PAGE_3, PAGE_4,PAGE_5,PAGE_6])
+    pages = {
+        PAGE_1: write_page_1,
+        PAGE_2: write_page_2,
+        PAGE_3: write_page_3,
+        PAGE_4: write_page_4,
+        PAGE_5: write_page_5,
+        PAGE_6: write_restricted_page
+    }
 
-    if page == PAGE_1:
-        write_page_1()
-    elif page == PAGE_2:
-        write_page_2()
-    elif page == PAGE_3:
-        write_page_3()
-    elif page == PAGE_4:
-        write_page_4()
-    elif page == PAGE_5:
-        write_page_5()
-    elif page == PAGE_6:
-        write_restricted_page()
+    page = st.sidebar.selectbox("Elige una pagina", list(pages.keys()))
+
+    selected_page = pages.get(page)
+
+    if selected_page:
+        selected_page()
+
         
 
     
