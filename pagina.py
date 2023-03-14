@@ -29,6 +29,7 @@ import time
 import random
 from model import Model
 import urllib.request
+import git
 
 
 
@@ -82,6 +83,20 @@ def write_page_1():
     
     
 def write_page_2():
+    repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
+    repo_dir = "img_predict"
+    if not os.path.exists(repo_dir):
+        git.Repo.clone_from(repo_url, repo_dir)
+
+# Directorio donde se encuentran las imágenes
+img_dir = os.path.join(repo_dir, "img_predict")
+
+# Mostrar las imágenes
+st.write("Imágenes disponibles:")
+for img_name in os.listdir(img_dir):
+    img_path = os.path.join(img_dir, img_name)
+    img = Image.open(img_path)
+    st.image(img, caption=img_name, width=300)
     IMG_DIR = 'img_predict'
     df_adopted = pd.read_csv("adopted.csv")
    
