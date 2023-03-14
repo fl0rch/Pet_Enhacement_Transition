@@ -317,7 +317,7 @@ def write_restricted_page():
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
               
-                return
+                
                 st.write(f'La raza es {pred}')
                 
                 df = pd.DataFrame(columns=['path', 'name', 'breed', 'description'])
@@ -325,7 +325,7 @@ def write_restricted_page():
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
                 st.write("Datos guardados")
-            
+                return
     else:
         # Mostrar la página de inicio de sesión
         st.title("Iniciar sesión")
