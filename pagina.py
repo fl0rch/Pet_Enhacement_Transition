@@ -28,6 +28,7 @@ from streamlit_lottie import st_lottie
 import time
 import random
 from model import Model
+import urllib.request
 
 
 
@@ -119,7 +120,7 @@ def write_page_2():
         # Construir la URL de la imagen en GitHub
         img_url = f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{row['path']}"
         # Mostrar la imagen
-        img = Image.open(requests.get(img_url, stream=True).raw)
+        img = Image.open(urllib.request.urlopen(img_url))
         st.image(img, caption=f"{row['name']}", width=300)
         st.write("**Descripción:**", row['description'])
      else:
