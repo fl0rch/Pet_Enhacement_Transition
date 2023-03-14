@@ -84,23 +84,9 @@ def write_page_1():
     
 def write_page_2():
     
+    df_adopted = pd.read_csv("adopted.csv")
     repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
     repo_dir = "Pet_Enhacement_Transition"
-    if not os.path.exists(repo_dir):
-     git.Repo.clone_from(repo_url, repo_dir)
-
-# Directorio donde se encuentran las imágenes
-    img_dir = os.path.join(repo_dir, "img_predict")
-
-# Mostrar las imágenes
-    st.write("Imágenes disponibles:")
-    for img_name in os.listdir(img_dir):
-     img_path = os.path.join(img_dir, img_name)
-     img = Image.open(img_path)
-     st.image(img, caption=img_name, width=300)
-
-    IMG_DIR = 'img_predict'
-    df_adopted = pd.read_csv("adopted.csv")
    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -131,17 +117,22 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
+    if not os.path.exists(repo_dir):
+     git.Repo.clone_from(repo_url, repo_dir)
+
+    img_dir = os.path.join(repo_dir, "img_predict")
+    
 
     for index, row in df_adopted.iterrows():
-        if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
-            # Mostrar la imagen
-            img = Image.open(f"{IMG_DIR}/{row['path']}")
-            st.image(img, caption=f"{breed_choice} imagen", width=300)
-            st.write("**Nombre:**", row['name'])
-            st.write("**Descripción:**", row['description'])
-        else:
-            # Mostrar mensaje de que la imagen no está disponible
-            st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+       if row['path'] is not None and os.path.exists(img_dir) and row['breed'] == breed_choice:
+        # Mostrar la imagen
+        img = Image.open(f"{img_dir}/{row['path']}")
+        st.image(img, caption=f"{breed_choice} imagen", width=300)
+        st.write("**Nombre:**", row['name'])
+        st.write("**Descripción:**", row['description'])
+       else:
+        # Mostrar mensaje de que la imagen no está disponible
+        st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
 
 
 
