@@ -118,9 +118,9 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     if not os.path.exists(repo_dir):
-    git.Repo.clone_from(repo_url, repo_dir)
+     git.Repo.clone_from(repo_url, repo_dir)
 
-    img_dir = os.path.join(repo_dir, "img_predict")
+     img_dir = os.path.join(repo_dir, "img_predict")
 
     for index, row in df_adopted.iterrows():
      if row['path'] is not None and os.path.exists(img_dir) and row['breed'] == breed_choice:
