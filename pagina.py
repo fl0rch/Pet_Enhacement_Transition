@@ -316,8 +316,7 @@ def write_restricted_page():
                 
                 model = Model(weights_path='inceptionV3.h5', classes_name_path='breeds.json')
                 pred = model.predict(uploaded_file)
-                if pred not in ["dog", "cat"]:
-                 st.error("La imagen no es de un perro o un gato")
+              
                 return
                 st.write(f'La raza es {pred}')
                 
