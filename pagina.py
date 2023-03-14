@@ -116,7 +116,8 @@ def write_page_2():
 
     for index, row in df_adopted.iterrows():
      if row['path'] is not None and os.path.exists(IMG_DIR) and row['breed'] == breed_choice:
-        img_path = f"{IMG_DIR}/{row['path']}"
+        img_path = img_path = f"https://github.com/fl0rch/Pet_Enhacement_Transition/raw/main/img_predict/{row['path']}"
+
         print(img_path)
         # Mostrar la imagen
         img = Image.open(img_path)
