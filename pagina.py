@@ -116,8 +116,8 @@ def write_page_2():
     
 
     for index, row in df_adopted.iterrows():
-    img_path = f"{IMG_DIR}/{row['path']}"
-    print(img_path)  # imprime la ruta completa de la imagen
+     img_path = f"{IMG_DIR}/{row['path']}"
+     print(img_path)  # imprime la ruta completa de la imagen
      if row['path'] is not None and os.path.exists(img_path) and row['breed'] == breed_choice:
         # Mostrar la imagen
         img = Image.open(img_path)
