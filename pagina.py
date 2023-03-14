@@ -85,7 +85,7 @@ def write_page_1():
 def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
-    print(df_adopted.head())
+    st.write(df_adopted.head())
     repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
     repo_dir = "Pet_Enhacement_Transition"
    
