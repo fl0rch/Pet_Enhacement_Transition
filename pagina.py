@@ -157,15 +157,19 @@ def write_page_2():
         
                 st.write("Otros animales disponibles:")
 
-                for img_name, img_info in image_data.items():
+                for img_name in os.listdir(img_dir):
                     img_path = os.path.join(img_dir, img_name)
-                if os.path.exists(img_path):
                     img = Image.open(img_path)
-                    st.write(f"Nombre: {img_info['name']}")
-                    st.write(f"Descripción: {img_info['description']}")
-                    st.image(img, width=300)
+
+    # Si el nombre de la imagen se encuentra en el diccionario de datos de imágenes, muestra el nombre y la descripción personalizados
+                if img_name in image_data:
+                    st.write(f"Nombre: {image_data[img_name]['name']}")
+                    st.write(f"Descripción: {image_data[img_name]['description']}")
                 else:
-                    st.write(f"No se pudo cargar la imagen: {img_name}")
+                    st.write(f"Nombre: {img_name}")
+                    st.write("Descripción: No disponible")
+
+                st.image(img, width=300)
                 
 
 
