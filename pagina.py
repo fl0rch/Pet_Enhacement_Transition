@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import streamlit.components.v1 as components
 import streamlit.components.v1 as stc
-from PIL import Image
+from PIL import Image, UnidentifiedImageError
 import PIL.Image
 import os 
 import csv
