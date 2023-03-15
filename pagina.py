@@ -146,28 +146,26 @@ def write_page_2():
                
                  
                 image_data = {
-                 "Sphynx_4.jpg": {"name": "Heimdallr", "description": "un gato curioso que vigila su hogar como el guardián mítico de la mitología nórdica."},
-                 "Maine_Coon_05.jpg": {"name": "Perséfone", "description": "Cariñosa y le gusta estar cerca de humanos."},
-                 "Lhasa_04.jpg": {"name": "Hades", "description": "Pequeñito pero matón."},
-                 "Boxer_09.jpg": {"name": "Caliope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
-                 "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."}
-}    
-                    
-                
-        
-                st.write("Otros animales disponibles:")
+                "Sphynx_4.jpg": {"name": "Heimdallr", "description": "un gato curioso que vigila su hogar como el guardián mítico de la mitología nórdica."},
+                "Maine_Coon_05.jpg": {"name": "Perséfone", "description": "Cariñosa y le gusta estar cerca de humanos."},
+                "Lhasa_04.jpg": {"name": "Hades", "description": "Pequeñito pero matón."},
+                "Boxer_09.jpg": {"name": "Caliope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
+                "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."}
+                }    
 
+                st.write("Otros animales disponibles:")
                 for img_name in os.listdir(img_dir):
                     img_path = os.path.join(img_dir, img_name)
                     img = Image.open(img_path)
                     st.image(img, caption=img_name, width=300)
 
-                    # Obtener la información del nombre y la descripción de la imagen actual del diccionario
-                if img_name in image_data:
+    # Obtener la información del nombre y la descripción de la imagen actual del diccionario
+               if img_name in image_data:
                     st.write("**Nombre:**", image_data[img_name]['name'])
                     st.write("**Descripción:**", image_data[img_name]['description'])
-                else:
+               else:
                     st.write("No hay información disponible para esta imagen.")
+
                 
 
 
