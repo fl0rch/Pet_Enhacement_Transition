@@ -124,7 +124,7 @@ def write_page_2():
             print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
                 # Mostrar la imagen usando el enlace de descarga de GitHub y cargarla con requests y BytesIO
-                img_url = f"https://github.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{row['path']}"
+                img_url = f"https://github.com/fl0rch/Pet_Enhacement_Transition/blob/main/img_predict/{row['path']}"
                 st.write(f"Image URL: {img_url}")
                 response = requests.get(img_url)
                 img = Image.open(BytesIO(response.content))
