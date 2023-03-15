@@ -124,10 +124,11 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
+    matched = False
     for index, row in df_adopted.iterrows():
         if row['path'] is not None:
             st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
-            if row['breed'] == breed_choice:
+            if row['breed'].strip() == breed_choice.strip():
                 img_path = os.path.join(img_dir, row['path'])
                 st.write(f"Image path: {img_path}")
                 if os.path.exists(img_path):
@@ -135,9 +136,12 @@ def write_page_2():
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
                     st.write("**Nombre:**", row['name'])
                     st.write("**Descripción:**", row['description'])
+                    matched = True
                 else:
                     # Mostrar mensaje de que la imagen no está disponible
                     st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+    if not matched:
+        st.warning(f"No se encontraron coincidencias para la raza '{breed_choice}'.")
 
         
         
