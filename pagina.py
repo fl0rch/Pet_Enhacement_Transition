@@ -143,8 +143,8 @@ def write_page_2():
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
         
         
-        st.write("Otras imágenes disponibles:")
-         for img_name in os.listdir(img_dir):
+    st.write("Otras imágenes disponibles:")
+    for img_name in os.listdir(img_dir):
             img_path = os.path.join(img_dir, img_name)
             img = Image.open(img_path)
             st.image(img, width=300)
