@@ -123,7 +123,9 @@ def write_page_2():
         if row['path'] is not None:
             print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
-                # Mostrar la imagen usando el enlace de descarga de GitHub y cargarla con requests y BytesIO
+                file_parts = row['path'].split('_')
+                file_parts[-1] = file_parts[-1].zfill(2)  # Añadir ceros al inicio del número para que tenga dos dígitos
+                corrected_filename = '_'.join(file_parts)
                 img_url = f"https://github.com/fl0rch/Pet_Enhacement_Transition/blob/main/img_predict/{row['path']}"
                 st.write(f"Image URL: {img_url}")
                 response = requests.get(img_url)
