@@ -88,14 +88,14 @@ def write_page_2():
     st.write(df_adopted.head())
     unique_breeds = df_adopted['breed'].unique()
     st.write("Razas únicas en el DataFrame:", unique_breeds)
-    repo_dir = Path("Pet_Enhacement_Transition")
-    img_dir = Path(repo_dir) / "img_predict"
+    
 
     if not os.path.exists(repo_dir):
         git.Repo.clone_from(repo_url, repo_dir)
 
     img_dir = os.path.join(repo_dir, "img_predict")
-
+    repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
+    img_dir = "img_predict"
     
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -126,25 +126,22 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    matched = False
     for index, row in df_adopted.iterrows():
         if row['path'] is not None:
             st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
-            if row['breed'].strip() == breed_choice.strip():
-                img_path = os.path.join(img_dir, row['path'])
-                st.write(f"Image path: {img_path}")
-                if os.path.exists(img_path):
-                    img = Image.open(str(img_path))
-                    st.image(img, caption=f"{breed_choice} imagen", width=300)
-                    st.write("**Nombre:**", row['name'])
-                    st.write("**Descripción:**", row['description'])
-                    matched = True
-                else:
-                    # Mostrar mensaje de que la imagen no está disponible
-                    st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
-    if not matched:
-        st.warning(f"No se encontraron coincidencias para la raza '{breed_choice}'.")
+            if row['breed'] == breed_choice:
+                # Modificación aquí
+                img_url = f"{repo_url}/{img_dir}/{row['path']}"
+                st.write(f"Image URL: {img_url}")
+                response = requests.get(img_url)
+                img = Image.open(BytesIO(response.content))
 
+                st.image(img, caption=f"{breed_choice} imagen", width=300)
+                st.write("**Nombre:**", row['name'])
+                st.write("**Descripción:**", row['description'])
+            else:
+                # Mostrar mensaje de que la imagen no está disponible
+                st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
         
         
         st.write("Otras imágenes disponibles:")
