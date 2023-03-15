@@ -143,6 +143,13 @@ def write_page_2():
                     st.write("**Nombre:**", row['name'])  
                     st.write("**Descripción:**", row['description'])
                 
+                image_filenames = [
+                    "Beagle_09.jpg",
+                    "Sphynx_04.jpg",
+                    "Golden_Retriever_01.jpg"
+                    "Lhasa_04.jpg"
+                    "Maine_Coon.jpg"
+                ]
                 
                 
                 image_data = {
@@ -157,11 +164,10 @@ def write_page_2():
         
                 st.write("Otros animales disponibles:")
 
-                for img_name in os.listdir(img_dir):
+                for img_name in image_filenames:
                     img_path = os.path.join(img_dir, img_name)
                     img = Image.open(img_path)
 
-    # Si el nombre de la imagen se encuentra en el diccionario de datos de imágenes, muestra el nombre y la descripción personalizados
                 if img_name in image_data:
                     st.write(f"Nombre: {image_data[img_name]['name']}")
                     st.write(f"Descripción: {image_data[img_name]['description']}")
@@ -169,7 +175,6 @@ def write_page_2():
                     st.write(f"Nombre: {img_name}")
                     st.write("Descripción: No disponible")
 
-                st.image(img, width=300)
                 st.image(img, width=300)
                 
 
