@@ -129,8 +129,37 @@ def write_page_2():
             print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
                 # Mostrar la imagen usando la URL del repositorio de GitHub
+                Lamento escuchar que el problema persiste. A continuación, se muestra otra solución para cargar y mostrar imágenes utilizando requests y BytesIO de la biblioteca io. Esto debería solucionar el problema de no poder mostrar las imágenes.
+
+python
+Copy code
+import pandas as pd
+import streamlit as st
+from PIL import Image
+import os
+import requests
+from io import BytesIO
+
+def write_page_2():
+    
+    df_adopted = pd.read_csv("adopted.csv")
+    st.write(df_adopted.head())
+    repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
+
+    # Cambiar la definición de img_dir para usar la ruta local directamente
+    img_dir = "img_predict"
+
+    # El resto de su código se mantiene igual
+
+    for index, row in df_adopted.iterrows():
+        if row['path'] is not None:
+            print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
+            if row['breed'] == breed_choice:
+                # Mostrar la imagen usando el enlace de descarga de GitHub y cargarla con requests y BytesIO
                 img_url = f"https://github.com/fl0rch/Pet_Enhacement_Transition/raw/main/img_predict/{row['path']}"
-                st.image(img_url, caption=f"{breed_choice} imagen", width=300)
+                response = requests.get(img_url)
+                img = Image.open(BytesIO(response.content))
+                st.image(img, caption=f"{breed_choice} imagen", width=300)
                 st.write("**Nombre:**", row['name'])
                 st.write("**Descripción:**", row['description'])
             else:
