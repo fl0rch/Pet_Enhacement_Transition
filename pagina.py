@@ -134,7 +134,7 @@ def write_page_2():
                 img_path = os.path.join(img_dir, row['path'])
                 st.write(f"Image path: {img_path}")
                 if os.path.exists(img_path):
-                   img = Image.open(str(img_path))
+                    img = Image.open(str(img_path))
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
                     st.write("**Nombre:**", row['name'])
                     st.write("**Descripción:**", row['description'])
