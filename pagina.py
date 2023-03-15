@@ -164,8 +164,8 @@ def write_page_2():
 
                     # Obtener la información del nombre y la descripción de la imagen actual del diccionario
                 if img_name in image_info:
-                    st.write("**Nombre:**", image_info[img_name]['name'])
-                    st.write("**Descripción:**", image_info[img_name]['description'])
+                    st.write("**Nombre:**", image_data[img_name]['name'])
+                    st.write("**Descripción:**", image_data[img_name]['description'])
                 else:
                     st.write("No hay información disponible para esta imagen.")
                 
