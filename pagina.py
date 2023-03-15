@@ -138,7 +138,7 @@ def write_page_2():
         
         # Mostrar otras imágenes disponibles usando la URL del repositorio de GitHub
         st.write('Otras imagenes disponibles')
-        for img_name in os.listdir(img_dir):
+        for img_name in os.listdir(img_predict):
             img_url = f"{repo_url}/img_predict/{img_name}"
             st.image(img_url, width=300)
 
