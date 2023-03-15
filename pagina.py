@@ -90,8 +90,7 @@ def write_page_2():
     st.write("Razas únicas en el DataFrame:", unique_breeds)
     
 
-    if not os.path.exists(repo_dir):
-        git.Repo.clone_from(repo_url, repo_dir)
+    
 
     img_dir = os.path.join(repo_dir, "img_predict")
     repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
