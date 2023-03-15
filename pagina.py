@@ -30,7 +30,7 @@ import random
 from model import Model
 import urllib.request
 import git
-
+from pathlib import Path
 
 
 st.set_page_config(page_title="P.E.T", page_icon=":paw_prints:")
@@ -86,8 +86,8 @@ def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
-    repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
-    repo_dir = "Pet_Enhacement_Transition"
+    repo_dir = Path("Pet_Enhacement_Transition")
+    img_dir = repo_dir / "img_predict"
 
     if not os.path.exists(repo_dir):
         git.Repo.clone_from(repo_url, repo_dir)
@@ -128,9 +128,9 @@ def write_page_2():
         if row['path'] is not None:
             st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
-                img_path = os.path.join(img_dir, row['path'])
+                img_path = img_dir / row['path']
                 st.write(f"Image path: {img_path}")
-                if os.path.exists(img_path):
+                if img_path.exists():
                     img = Image.open(img_path)
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
                     st.write("**Nombre:**", row['name'])
