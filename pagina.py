@@ -149,7 +149,7 @@ def write_page_2():
     "Sphynx_4.jpg": {"name": "Heimdallr", "description": "un gato curioso que vigila su hogar como el guardián mítico de la mitología nórdica."},
     "Maine_Coon_05.jpg": {"name": "Perséfone", "description": "Cariñosa y le gusta estar cerca de humanos."},
     "Lhasa_04.jpg": {"name": "Hades", "description": "Pequeñito pero matón."},
-    "Boxer_09.jpg": {"name": "Caliope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
+    "Boxer_09.jpg": {"name": "Calíope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
     "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."}
     }
 
