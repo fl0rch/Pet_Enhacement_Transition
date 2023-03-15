@@ -170,6 +170,7 @@ def write_page_2():
                     st.write("Descripción: No disponible")
 
                 st.image(img, width=300)
+                st.image(img, width=300)
                 
 
 
