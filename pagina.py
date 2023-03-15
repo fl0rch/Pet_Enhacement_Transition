@@ -166,7 +166,7 @@ def write_page_2():
                     st.write(f"Nombre: {image_data[img_name]['name']}")
                     st.write(f"Descripción: {image_data[img_name]['description']}")
                     st.image(img, width=300)
-                 else:
+                else:
                     st.write(f"Nombre: {img_name}")
                     st.write("Descripción: No disponible")
                     st.image(img, width=300
