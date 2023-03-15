@@ -125,18 +125,20 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     for index, row in df_adopted.iterrows():
-     if row['path'] is not None:
-        print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
-        if row['breed'] == breed_choice:
-            img_path = os.path.join(img_dir, row['path'])
-            if os.path.exists(img_path):
-                img = Image.open(img_path)
-                st.image(img, caption=f"{breed_choice} imagen", width=300)
-                st.write("**Nombre:**", row['name'])
-                st.write("**Descripción:**", row['description'])
-            else:
-                # Mostrar mensaje de que la imagen no está disponible
-                st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+        if row['path'] is not None:
+            st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
+            if row['breed'] == breed_choice:
+                corrected_filename = row['path'].replace(".", "_", 1).replace("_", ".", 1)
+                img_path = os.path.join(img_dir, corrected_filename)
+                st.write(f"Image path: {img_path}")
+                if os.path.exists(img_path):
+                    img = Image.open(img_path)
+                    st.image(img, caption=f"{breed_choice} imagen", width=300)
+                    st.write("**Nombre:**", row['name'])
+                    st.write("**Descripción:**", row['description'])
+                else:
+                    # Mostrar mensaje de que la imagen no está disponible
+                    st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
         
         
         st.write("Otras imágenes disponibles:")
