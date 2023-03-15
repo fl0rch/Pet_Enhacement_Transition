@@ -87,7 +87,7 @@ def write_page_2():
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
     repo_dir = Path("Pet_Enhacement_Transition")
-    img_dir = repo_dir / "img_predict"
+    img_dir = Path(repo_dir) / "img_predict"
 
     if not os.path.exists(repo_dir):
         git.Repo.clone_from(repo_url, repo_dir)
