@@ -163,7 +163,7 @@ def write_page_2():
                     st.image(img, caption=img_name, width=300)
 
                     # Obtener la información del nombre y la descripción de la imagen actual del diccionario
-                 if img_name in image_info:
+                if img_name in image_info:
                     st.write("**Nombre:**", image_info[img_name]['name'])
                     st.write("**Descripción:**", image_info[img_name]['description'])
                 else:
