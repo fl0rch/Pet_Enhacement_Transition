@@ -135,18 +135,15 @@ def write_page_2():
                 try:
                     response = requests.get(f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{row['path']}")
                     img = Image.open(BytesIO(response.content))
-                    st.image(img, caption=f"{breed_choice} imagen", width=300)
                 except UnidentifiedImageError:
+                    img = None
                     st.warning("La imagen no se pudo cargar. Verifica la URL o intenta cargar otra imagen.")
                 except requests.exceptions.RequestException as e:
+                    img = None
                     st.warning(f"Hubo un problema al obtener la imagen: {e}")
 
-                st.image(img, caption=f"{breed_choice} imagen", width=300)
-                st.write("**Nombre:**", row['name'])
-                st.write("**Descripción:**", row['description'])
-            else:
-                # Mostrar mensaje de que la imagen no está disponible
-                st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+                if img is not None:
+                    st.image(img, caption=f"{breed_choice} imagen", width=300)
         
         
         st.write("Otras imágenes disponibles:")
