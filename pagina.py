@@ -164,18 +164,11 @@ def write_page_2():
         
                 st.write("Otros animales disponibles:")
 
-                for img_name in image_filenames:
+                 
+                for img_name in os.listdir(img_dir):
                     img_path = os.path.join(img_dir, img_name)
                     img = Image.open(img_path)
-
-                if img_name in image_data:
-                    st.write(f"Nombre: {image_data[img_name]['name']}")
-                    st.write(f"Descripción: {image_data[img_name]['description']}")
-                else:
-                    st.write(f"Nombre: {img_name}")
-                    st.write("Descripción: No disponible")
-
-                st.image(img, width=300)
+                    st.image(img, caption=img_name, width=300)
                 
 
 
