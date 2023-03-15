@@ -146,8 +146,8 @@ def write_page_2():
                 image_filenames = [
                     "Beagle_09.jpg",
                     "Sphynx_4.jpg",
-                    "Golden_Retriever_01.jpg"
-                    "Lhasa_04.jpg"
+                    "Boxer_09.jpg",
+                    "Lhasa_04.jpg",
                     "Maine_Coon_05.jpg"
                 ]
                 
