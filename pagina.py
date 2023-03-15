@@ -128,9 +128,9 @@ def write_page_2():
         if row['path'] is not None:
             st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
-                img_path = img_dir / row['path']
+                img_path = os.path.join(img_dir, row['path'])
                 st.write(f"Image path: {img_path}")
-                if img_path.exists():
+                if os.path.exists(img_path):
                     img = Image.open(img_path)
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
                     st.write("**Nombre:**", row['name'])
@@ -138,6 +138,7 @@ def write_page_2():
                 else:
                     # Mostrar mensaje de que la imagen no está disponible
                     st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
+
         
         
         st.write("Otras imágenes disponibles:")
