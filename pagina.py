@@ -85,6 +85,7 @@ def write_page_1():
 def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
+    st.write(df_adopted.head())
     
     
 
