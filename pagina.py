@@ -139,7 +139,7 @@ def write_page_2():
                     st.warning(f"Hubo un problema al obtener la imagen: {e}")
 
                 if img is not None:
-                    st.image(img, caption=f"{breed_choice} imagen", width=300)
+                    st.image(img, imagen", width=300)
                     st.write("**Nombre:**", row['name'])  
                     st.write("**Descripción:**", row['description'])  
         
