@@ -132,8 +132,14 @@ def write_page_2():
                 # Modificación aquí
                 img_url = f"{repo_url}/{img_dir}/{row['path']}"
                 st.write(f"Image URL: {img_url}")
-                response = requests.get(img_url)
-                img = Image.open(BytesIO(response.content))
+                try:
+                    response = requests.get(f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{row['path']}")
+                    img = Image.open(BytesIO(response.content))
+                    st.image(img, caption=f"{breed_choice} imagen", width=300)
+                except UnidentifiedImageError:
+                    st.warning("La imagen no se pudo cargar. Verifica la URL o intenta cargar otra imagen.")
+                except requests.exceptions.RequestException as e:
+                    st.warning(f"Hubo un problema al obtener la imagen: {e}")
 
                 st.image(img, caption=f"{breed_choice} imagen", width=300)
                 st.write("**Nombre:**", row['name'])
