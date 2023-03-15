@@ -85,9 +85,7 @@ def write_page_1():
 def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
-    st.write(df_adopted.head())
-    unique_breeds = df_adopted['breed'].unique()
-    st.write("Razas únicas en el DataFrame:", unique_breeds)
+    
     
 
     
@@ -150,7 +148,7 @@ def write_page_2():
         for img_name in os.listdir(img_dir):
             img_path = os.path.join(img_dir, img_name)
             img = Image.open(img_path)
-            st.image(img, caption=img_name, width=300)
+            st.image(img, width=300)
                 
 
 
@@ -354,7 +352,7 @@ def write_restricted_page():
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
                 st.write("Datos guardados")
-                st.dataframe(df)
+                
                 return
     else:
         # Mostrar la página de inicio de sesión
