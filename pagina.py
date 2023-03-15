@@ -139,7 +139,7 @@ def write_page_2():
         for img_name in os.listdir(img_dir):
             img_path = os.path.join(img_dir, img_name)
             img = Image.open(img_path)
-            st.image(img, caption=img_name, width=300
+            st.image(img, caption=img_name, width=300)
                 
 
 
