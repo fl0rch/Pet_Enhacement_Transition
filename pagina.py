@@ -143,15 +143,8 @@ def write_page_2():
                     st.write("**Nombre:**", row['name'])  
                     st.write("**Descripción:**", row['description'])
                 
-                image_filenames = [
-                    "Beagle_09.jpg",
-                    "Sphynx_4.jpg",
-                    "Boxer_09.jpg",
-                    "Lhasa_04.jpg",
-                    "Maine_Coon_05.jpg"
-                ]
-                
-                
+               
+                 
                 image_data = {
                  "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."},
                  "Boxer_09.jpg": {"name": "Caliope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
@@ -164,11 +157,17 @@ def write_page_2():
         
                 st.write("Otros animales disponibles:")
 
-                 
-                for img_name in os.listdir(img_dir):
+                 for img_name in os.listdir(img_dir):
                     img_path = os.path.join(img_dir, img_name)
                     img = Image.open(img_path)
                     st.image(img, caption=img_name, width=300)
+
+                    # Obtener la información del nombre y la descripción de la imagen actual del diccionario
+                 if img_name in image_info:
+                    st.write("**Nombre:**", image_info[img_name]['name'])
+                    st.write("**Descripción:**", image_info[img_name]['description'])
+                else:
+                    st.write("No hay información disponible para esta imagen.")
                 
 
 
