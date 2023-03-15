@@ -87,7 +87,8 @@ def write_page_2():
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
     repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
-   
+    img_dir = os.path.join(repo_dir, "img_predict")
+    
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
     animal_choice = st.selectbox("¿Qué animal te gustaría adoptar?", animals)
