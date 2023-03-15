@@ -141,14 +141,32 @@ def write_page_2():
                 if img is not None:
                     st.image(img, width=300)
                     st.write("**Nombre:**", row['name'])  
-                    st.write("**Descripción:**", row['description'])  
+                    st.write("**Descripción:**", row['description'])
+                
+                
+                image_data = {
+                 "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."},
+                 "Boxer_09.jpg": {"name": "Caliope", "description": "Es asustadiza pero cuando toma confianza es my juguetona."},
+                 "Lhasa_04.jpg": {"name": "Hades", "description": "Pequeñito pero matón."},
+                 "Maine_Coon.jpg": {"name": "Perséfone", "description": "Cariñosa y le gusta estar cerca de humanos."},
+                 "Sphynx_04.jpg": {"name": "Heimdallr", "description": "un gato curioso que vigila su hogar como el guardián mítico de la mitología nórdica."}
+}    
+                    
+                st.write("Otras imágenes disponibles:")
         
-        
-    st.write("Otras imágenes disponibles:")
-    for img_name in os.listdir(img_dir):
-            img_path = os.path.join(img_dir, img_name)
-            img = Image.open(img_path)
-            st.image(img, width=300)
+                for img_name in os.listdir(img_dir):
+                    img_path = os.path.join(img_dir, img_name)
+                    img = Image.open(img_path)
+
+                # Si el nombre de la imagen se encuentra en el diccionario de datos de imágenes, muestra el nombre y la descripción
+                if img_name in image_data:
+                    st.write(f"Nombre: {image_data[img_name]['name']}")
+                    st.write(f"Descripción: {image_data[img_name]['description']}")
+                else:
+                    st.write(f"Nombre: {img_name}")
+                    st.write("Descripción: No disponible")
+
+                st.image(img, width=300)
                 
 
 
