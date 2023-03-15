@@ -129,7 +129,7 @@ def write_page_2():
             print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
                 # Mostrar la imagen usando la URL del repositorio de GitHub
-                img_url = f"{repo_url}/img_predict/{row['path']}"
+                img_url = f"https://github.com/fl0rch/Pet_Enhacement_Transition/raw/main/img_predict/{row['path']}"
                 st.image(img_url, caption=f"{breed_choice} imagen", width=300)
                 st.write("**Nombre:**", row['name'])
                 st.write("**Descripción:**", row['description'])
