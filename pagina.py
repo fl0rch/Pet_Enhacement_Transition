@@ -119,38 +119,6 @@ def write_page_2():
     st.write("Has seleccionado adoptar un", breed_choice)
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
-    
-     
-        
-   
-
-    for index, row in df_adopted.iterrows():
-        if row['path'] is not None:
-            print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
-            if row['breed'] == breed_choice:
-                # Mostrar la imagen usando la URL del repositorio de GitHub
-                Lamento escuchar que el problema persiste. A continuación, se muestra otra solución para cargar y mostrar imágenes utilizando requests y BytesIO de la biblioteca io. Esto debería solucionar el problema de no poder mostrar las imágenes.
-
-python
-Copy code
-import pandas as pd
-import streamlit as st
-from PIL import Image
-import os
-import requests
-from io import BytesIO
-
-def write_page_2():
-    
-    df_adopted = pd.read_csv("adopted.csv")
-    st.write(df_adopted.head())
-    repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
-
-    # Cambiar la definición de img_dir para usar la ruta local directamente
-    img_dir = "img_predict"
-
-    # El resto de su código se mantiene igual
-
     for index, row in df_adopted.iterrows():
         if row['path'] is not None:
             print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
@@ -166,13 +134,13 @@ def write_page_2():
                 # Mostrar mensaje de que la imagen no está disponible
                 st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
         
-        # Mostrar otras imágenes disponibles usando la URL del repositorio de GitHub
-        st.write("Otras imágenes disponibles:")
+        
+        st.write("Imágenes disponibles:")
         for img_name in os.listdir(img_dir):
             img_path = os.path.join(img_dir, img_name)
             img = Image.open(img_path)
-            st.image(img, width=300)
-
+            st.image(img, caption=img_name, width=300
+                
 
 
     
