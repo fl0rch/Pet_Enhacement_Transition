@@ -85,7 +85,7 @@ def write_page_1():
 def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
-    st.write(df_adopted.head())
+   
     
     
 
@@ -126,9 +126,8 @@ def write_page_2():
     
     for index, row in df_adopted.iterrows():
             if row['breed'] == breed_choice:
-                # Modificación aquí
+                
                 img_url = f"{repo_url}/{img_dir}/{row['path']}"
-                st.write(f"Image URL: {img_url}")
                 try:
                     response = requests.get(f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{urllib.parse.quote(row['path'])}")
                     img = Image.open(BytesIO(response.content))
@@ -141,6 +140,8 @@ def write_page_2():
 
                 if img is not None:
                     st.image(img, caption=f"{breed_choice} imagen", width=300)
+                    st.write("**Nombre:**", row['name'])  
+                    st.write("**Descripción:**", row['description'])  
         
         
     st.write("Otras imágenes disponibles:")
@@ -351,7 +352,7 @@ def write_restricted_page():
                 df.to_csv('adopted.csv', mode='a', header=False, index=False)
 
                 st.write("Datos guardados")
-                st.dataframe(df)
+                
                 return
     else:
         # Mostrar la página de inicio de sesión
