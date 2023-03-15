@@ -125,8 +125,6 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     for index, row in df_adopted.iterrows():
-        if row['path'] is not None:
-            st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
                 # Modificación aquí
                 img_url = f"{repo_url}/{img_dir}/{row['path']}"
