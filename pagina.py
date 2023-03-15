@@ -128,8 +128,7 @@ def write_page_2():
         if row['path'] is not None:
             st.write(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
             if row['breed'] == breed_choice:
-                corrected_filename = row['path'].replace(".", "_", 1).replace("_", ".", 1)
-                img_path = os.path.join(img_dir, corrected_filename)
+                img_path = os.path.join(img_dir, row['path'])
                 st.write(f"Image path: {img_path}")
                 if os.path.exists(img_path):
                     img = Image.open(img_path)
