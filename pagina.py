@@ -133,7 +133,7 @@ def write_page_2():
                 img_url = f"{repo_url}/{img_dir}/{row['path']}"
                 st.write(f"Image URL: {img_url}")
                 try:
-                    response = requests.get(f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{row['path']}")
+                    response = requests.get(f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{urllib.parse.quote(row['path'])}")
                     img = Image.open(BytesIO(response.content))
                 except UnidentifiedImageError:
                     img = None
