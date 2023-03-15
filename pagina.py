@@ -157,7 +157,7 @@ def write_page_2():
     for img_name in os.listdir(img_dir):
             img_path = os.path.join(img_dir, img_name)
             img = Image.open(img_path)
-            st.image(img, , width=300)
+            st.image(img, width=300)
 
     # Obtener la información del nombre y la descripción de la imagen actual del diccionario
             if img_name in image_data:
