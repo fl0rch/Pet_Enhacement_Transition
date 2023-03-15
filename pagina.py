@@ -86,8 +86,13 @@ def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
-    repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
-    img_dir = "img_predict"
+    repo_url = "https://github.com/fl0rch/Pet_Enhacement_Transition.git"
+    repo_dir = "Pet_Enhacement_Transition"
+
+    if not os.path.exists(repo_dir):
+        git.Repo.clone_from(repo_url, repo_dir)
+
+    img_dir = os.path.join(repo_dir, "img_predict")
 
     
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
@@ -120,15 +125,12 @@ def write_page_2():
     st.write("Aquí hay alguna foto de los", breed_choice," disponibles para su adopción:")
     
     for index, row in df_adopted.iterrows():
-        if row['path'] is not None:
-            print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
-            if row['breed'] == breed_choice:
-             
-                corrected_filename = row['path'].replace(".", "_", 1).replace("_", ".", 1)
-                img_url = f"https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict/{corrected_filename}"
-                st.write(f"Image URL: {img_url}")
-                response = requests.get(img_url)
-                img = Image.open(BytesIO(response.content))
+     if row['path'] is not None:
+        print(f"breed_choice: {breed_choice}, row['breed']: {row['breed']}")
+        if row['breed'] == breed_choice:
+            img_path = os.path.join(img_dir, row['path'])
+            if os.path.exists(img_path):
+                img = Image.open(img_path)
                 st.image(img, caption=f"{breed_choice} imagen", width=300)
                 st.write("**Nombre:**", row['name'])
                 st.write("**Descripción:**", row['description'])
