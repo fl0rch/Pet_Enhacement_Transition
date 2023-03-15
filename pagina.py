@@ -87,7 +87,8 @@ def write_page_2():
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
     repo_url = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main"
-    img_dir = os.path.join(repo_dir, "img_predict")
+    img_dir = "img_predict"
+
     
     st.write("<h2>Adoptar un animal:</h2>", unsafe_allow_html=True)
     animals = ['Perro', 'Gato']
@@ -137,10 +138,11 @@ def write_page_2():
                 st.warning(f"La imagen de la raza '{breed_choice}' no está disponible.")
         
         # Mostrar otras imágenes disponibles usando la URL del repositorio de GitHub
-        st.write('Otras imagenes disponibles')
-        for img_name in os.listdir(img_predict):
-            img_url = f"{repo_url}/img_predict/{img_name}"
-            st.image(img_url, width=300)
+        st.write("Imágenes disponibles:")
+        for img_name in os.listdir(img_dir):
+            img_path = os.path.join(img_dir, img_name)
+            img = Image.open(img_path)
+            st.image(img, caption=img_name, width=300)
 
 
 
