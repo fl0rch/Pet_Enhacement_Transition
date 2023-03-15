@@ -86,6 +86,8 @@ def write_page_2():
     
     df_adopted = pd.read_csv("adopted.csv")
     st.write(df_adopted.head())
+    unique_breeds = df_adopted['breed'].unique()
+    st.write("Razas únicas en el DataFrame:", unique_breeds)
     repo_dir = Path("Pet_Enhacement_Transition")
     img_dir = Path(repo_dir) / "img_predict"
 
