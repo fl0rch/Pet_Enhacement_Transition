@@ -143,6 +143,7 @@ def write_page_2():
                     st.write("**Nombre:**", row['name'])  
                     st.write("**Descripción:**", row['description'])
                 
+                fotos = "https://raw.githubusercontent.com/fl0rch/Pet_Enhacement_Transition/main/img_predict"
                 
                 image_data = {
                  "Beagle_09.jpg": {"name": "Thor", "description": "Es muy bueno y cariñoso."},
@@ -154,19 +155,19 @@ def write_page_2():
                     
                 st.write("Otras imágenes disponibles:")
         
-                for img_name in os.listdir(img_dir):
-                    img_path = os.path.join(img_dir, img_name)
-                    img = Image.open(img_path)
+                st.write("Otras imágenes disponibles:")
 
-                # Si el nombre de la imagen se encuentra en el diccionario de datos de imágenes, muestra el nombre y la descripción
-                if img_name in image_data:
+                for img_name in image_data.keys():
+                    img_url = f"{fotos}/{img_name}"
+                    response = requests.get(img_url)
+
+                if response.status_code == 200:
+                    img = Image.open(BytesIO(response.content))
                     st.write(f"Nombre: {image_data[img_name]['name']}")
                     st.write(f"Descripción: {image_data[img_name]['description']}")
+                    st.image(img, width=300)
                 else:
-                    st.write(f"Nombre: {img_name}")
-                    st.write("Descripción: No disponible")
-
-                st.image(img, width=300)
+                    st.write(f"No se pudo cargar la imagen: {img_name}")
                 
 
 
